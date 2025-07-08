@@ -22,8 +22,8 @@ public class ObjectPoolManager : MonoBehaviour
     [Tooltip("Configure pools with unique tags and prefabs.")]
     public List<Pool> pools;
 
-    private readonly Dictionary<string, Queue<GameObject>> poolDictionary = new();
-    private readonly Dictionary<string, Pool> poolConfigs = new();
+    private readonly Dictionary<string, Queue<GameObject>> poolDictionary = new Dictionary<string, Queue<GameObject>>();
+    private readonly Dictionary<string, Pool> poolConfigs = new Dictionary<string, Pool>();
 
     private void Awake()
     {

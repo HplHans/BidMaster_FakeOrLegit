@@ -12,4 +12,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 300ab585a29dd9044ac9e2dc4b1e6a3f, type: 3}
   m_Name: AudioLibrary
   m_EditorClassIdentifier: 
-  clips: []
+  clips:
+  - key: BGM
+    channel: 0
+    clip: {fileID: 8300000, guid: cf3ec703f61a66e4380ffb37fb2700b6, type: 3}
+    volume: 0.286
+    loop: 1
+  - key: OnBid
+    channel: 1
+    clip: {fileID: 8300000, guid: 88ca56aa488bed54ea4716773ba4997f, type: 3}
+    volume: 0.359
+    loop: 0
+  - key: OnClaim
+    channel: 1
+    clip: {fileID: 8300000, guid: dfa38b5999ff6c246a1bbf07a955cbd1, type: 3}
+    volume: 0.48
+    loop: 0
+  - key: OnCloseGate
+    channel: 1
+    clip: {fileID: 8300000, guid: 55df9f0dd84ab504fabfb8a7c6268565, type: 3}
+    volume: 0.55
+    loop: 0
+  - key: OnCollect
+    channel: 1
+    clip: {fileID: 8300000, guid: 63d3ea38438381a41bffbb1a824ba273, type: 3}
+    volume: 0.416
+    loop: 0
+  - key: OnOpenGate
+    channel: 1
+    clip: {fileID: 8300000, guid: 65934acd66851b64883331f01871f7b5, type: 3}
+    volume: 0.416
+    loop: 0
+  - key: OnProfit
+    channel: 1
+    clip: {fileID: 8300000, guid: c4d627343d3983147816d46059f4622f, type: 3}
+    volume: 0.416
+    loop: 0
+  - key: OnSold
+    channel: 1
+    clip: {fileID: 8300000, guid: ccac92386b736a549a8519f03b7c3b30, type: 3}
+    volume: 0.364
+    loop: 0
+  - key: OnSold1
+    channel: 1
+    clip: {fileID: 8300000, guid: 3e73f3d74ff011f4fa70f661895575ec, type: 3}
+    volume: 0.364
+    loop: 0
+  - key: OnEnd
+    channel: 0
+    clip: {fileID: 8300000, guid: b84b322ef735890409e66823a41d1265, type: 3}
+    volume: 0.2
+    loop: 1
+  - key: OnError
+    channel: 1
+    clip: {fileID: 8300000, guid: 6c6829b919b7ba8459721d94374ea44c, type: 3}
+    volume: 0.41
+    loop: 0
+  - key: OnClick
+    channel: 1
+    clip: {fileID: 8300000, guid: 51bd177eb4f024846bee04d835ea7d01, type: 3}
+    volume: 0.41
+    loop: 0
+  - key: OnPop
+    channel: 1
+    clip: {fileID: 8300000, guid: 93ae38165b9804940b974353c9a61040, type: 3}
+    volume: 0.41
+    loop: 0
+  - key: OnFail
+    channel: 1
+    clip: {fileID: 8300000, guid: 9d32ea8a7c924af4ab273ec2539e8235, type: 3}
+    volume: 0.41
+    loop: 0
+  - key: OnWin
+    channel: 1
+    clip: {fileID: 8300000, guid: 27dd60f125112b7409dc84234d354687, type: 3}
+    volume: 0.41
+    loop: 0
+  - key: OnSwift
+    channel: 1
+    clip: {fileID: 8300000, guid: 74de2d359a42db64d860d84b122b979c, type: 3}
+    volume: 0.41
+    loop: 0
