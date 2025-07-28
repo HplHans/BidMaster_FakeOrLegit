@@ -45,7 +45,7 @@ MonoBehaviour:
     loop: 0
   - key: OnProfit
     channel: 1
-    clip: {fileID: 8300000, guid: c4d627343d3983147816d46059f4622f, type: 3}
+    clip: {fileID: 8300000, guid: 98cc66e7747b75c47846e3d87240a6c9, type: 3}
     volume: 0.416
     loop: 0
   - key: OnSold
@@ -75,7 +75,7 @@ MonoBehaviour:
     loop: 0
   - key: OnPop
     channel: 1
-    clip: {fileID: 8300000, guid: 93ae38165b9804940b974353c9a61040, type: 3}
+    clip: {fileID: 8300000, guid: 6cf6c53ad46dd884ebf4f84a6e5b578f, type: 3}
     volume: 0.41
     loop: 0
   - key: OnFail

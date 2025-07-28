@@ -7242,10 +7242,6 @@
                 "excluded": true
             },
             {
-                "name": "DG.Tweening.Core.Easing.Flash",
-                "excluded": true
-            },
-            {
                 "name": "DG.Tweening.Core.Extensions",
                 "excluded": true
             },
@@ -16667,7 +16663,7 @@
                     },
                     {
                         "name": "GetLastTimingAmongEvents",
-                        "excluded": true
+                        "excluded": false
                     }
                 ]
             },
@@ -24835,7 +24831,7 @@
                 "instanceMethods": [
                     {
                         "name": "renderOrderPriority#get",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "sortOrderPriority#get",
@@ -31723,7 +31719,7 @@
                     },
                     {
                         "name": "CTAClicked",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "ChangeState",
@@ -31760,6 +31756,10 @@
                     {
                         "name": "Pass",
                         "excluded": false
+                    },
+                    {
+                        "name": "ShowFake",
+                        "excluded": false
                     }
                 ]
             },
@@ -31779,6 +31779,10 @@
                 "instanceMethods": [
                     {
                         "name": "Start",
+                        "excluded": false
+                    },
+                    {
+                        "name": "showFake",
                         "excluded": false
                     }
                 ]
@@ -32609,6 +32613,32 @@
                     },
                     {
                         "name": "Reset",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "DG.Tweening.Core.Easing.Flash",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Ease",
+                        "excluded": true
+                    },
+                    {
+                        "name": "EaseIn",
+                        "excluded": true
+                    },
+                    {
+                        "name": "EaseOut",
+                        "excluded": true
+                    },
+                    {
+                        "name": "EaseInOut",
+                        "excluded": false
+                    },
+                    {
+                        "name": "WeightedEase",
                         "excluded": false
                     }
                 ]

@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public StartClickHandler startClickHandler;
     public int itemValue;
     public GameObject[] biddersBubble;
+    public GameObject promptBubble;
     public GameObject btnGroup;
     public GameObject biddersLossTxt;
     public GameObject biddersLossPlus;
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour
     public GameObject playersPlus;
     public GameObject AuthenticImg;
     public GameObject profitImg;
+    public GameObject fakeImg;
     public TMP_Text cashTxt;
     public CanvasGroupAnimator failBidCanvas;
     public CanvasGroupAnimator failPassCanvas;
@@ -39,6 +41,7 @@ public class GameManager : MonoBehaviour
     public bool fail;
     public bool bidFail;
     public bool passFail;
+    public bool conditionMet;
     public enum GameState { MainMenu, Playing, Paused, GameOver }
     public GameState CurrentState { get; private set; }
     public int currentScore;
@@ -73,12 +76,13 @@ public class GameManager : MonoBehaviour
 
         seq.Append(()=> SetLevel(1));
         seq.AppendWaitUntil(()=> level == 2);
+        seq.AppendDelay(2);
         seq.Append(() => SetLevel(2));
         seq.AppendWaitUntil(() => level == 3);
         seq.AppendDelay(3);
         seq.Append(() => SetLevel(3));
         seq.AppendWaitUntil(() => win == true);
-        seq.AppendDelay(1);
+        seq.AppendDelay(3);
         seq.Append(() => StartCoroutine(Win()));
         seq.Start();
 
@@ -91,6 +95,12 @@ public class GameManager : MonoBehaviour
         seq2.AppendDelay(1);
         seq2.Append(() => StartCoroutine(FailBid()));
         seq2.Start();
+    }
+
+    public void ShowFake()
+    {
+        fakeImg.SetActive(true);
+        fakeImg.GetComponent<PromtPopUp>().showFake();
     }
 
     public IEnumerator Win()
@@ -200,16 +210,41 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < biddersBubble.Length; i++)
         {
-            biddersBubble[i].gameObject.SetActive(true);
             AudioManager.Instance.PlaySFX("OnBid");
             if(i == 0)
-                biddersBubble[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = items[level - 1].bidder1Bid;
+            {
+                Debug.Log("0");
+                biddersBubble[0].gameObject.SetActive(true);
+                biddersBubble[0].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = items[level - 1].bidder1Bid;
+            }
+                
             if (i == 1)
-                biddersBubble[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = items[level - 1].bidder2Bid;
+            {
+                Debug.Log("1");
+                biddersBubble[1].gameObject.SetActive(true);
+                biddersBubble[1].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = items[level - 1].bidder2Bid;
+            }
+                
             if (i == 2)
-                biddersBubble[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = items[level - 1].bidder3Bid;
+            {
+                Debug.Log("2");
+                biddersBubble[2].gameObject.SetActive(true);
+                biddersBubble[2].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = items[level - 1].bidder3Bid;
+            }
+                
             if (i == 3)
-                biddersBubble[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = items[level - 1].playerBid;
+            {
+                Debug.Log("3");
+                if (!conditionMet)
+                {
+                    promptBubble.gameObject.SetActive(true);
+                    yield return new WaitUntil(() => conditionMet);
+                    promptBubble.gameObject.SetActive(false);
+                }
+                biddersBubble[3].gameObject.SetActive(true);
+                biddersBubble[3].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = items[level - 1].playerBid;
+            }
+                
             if (i == 3 && i <= 3)
             {
                 btnGroup.gameObject.SetActive(true);
@@ -253,6 +288,7 @@ public class GameManager : MonoBehaviour
         DestroyHandObj();
         if (level == 1)
         {
+            ShowFake();
             playersLoss.gameObject.SetActive(true);
             playersLoss.GetComponent<FloatingTextEffect>().ShowFloatingTextMinus("290");
             cashTxt.text = (Int32.Parse(cashTxt.text) - 290).ToString();
@@ -268,12 +304,19 @@ public class GameManager : MonoBehaviour
         }
         if (level == 3)
         {
+            bidFail = true;
+            ShowFake();
             playersLoss.gameObject.SetActive(true);
             playersLoss.GetComponent<FloatingTextEffect>().ShowFloatingTextMinus("180");
             cashTxt.text = (Int32.Parse(cashTxt.text) - 180).ToString();
-            if(bidFail)
+            if (bidFail)
+            {
                 fail = true;
-            win = true;
+            }
+            else
+            {
+                win = true;
+            }
         }
         level++;
     }
@@ -291,6 +334,7 @@ public class GameManager : MonoBehaviour
         DestroyHandObj();
         if (level == 1)
         {
+            ShowFake();
             biddersLossTxt.gameObject.SetActive(true);
             biddersLossTxt.GetComponent<FloatingTextEffect>().ShowFloatingTextMinus("190");
         }
@@ -303,6 +347,7 @@ public class GameManager : MonoBehaviour
         }
         if (level == 3)
         {
+            ShowFake();
             biddersLossTxt.gameObject.SetActive(true);
             biddersLossTxt.GetComponent<FloatingTextEffect>().ShowFloatingTextMinus("130");
             if (bidFail)

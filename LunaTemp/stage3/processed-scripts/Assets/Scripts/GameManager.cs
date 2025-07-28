@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     public GameObject playersPlus;
     public GameObject AuthenticImg;
     public GameObject profitImg;
+    public GameObject fakeImg;
     public TMP_Text cashTxt;
     public CanvasGroupAnimator failBidCanvas;
     public CanvasGroupAnimator failPassCanvas;
@@ -73,12 +74,13 @@ public class GameManager : MonoBehaviour
 
         seq.Append(()=> SetLevel(1));
         seq.AppendWaitUntil(()=> level == 2);
+        seq.AppendDelay(2);
         seq.Append(() => SetLevel(2));
         seq.AppendWaitUntil(() => level == 3);
         seq.AppendDelay(3);
         seq.Append(() => SetLevel(3));
         seq.AppendWaitUntil(() => win == true);
-        seq.AppendDelay(1);
+        seq.AppendDelay(3);
         seq.Append(() => StartCoroutine(Win()));
         seq.Start();
 
@@ -91,6 +93,12 @@ public class GameManager : MonoBehaviour
         seq2.AppendDelay(1);
         seq2.Append(() => StartCoroutine(FailBid()));
         seq2.Start();
+    }
+
+    public void ShowFake()
+    {
+        fakeImg.SetActive(true);
+        fakeImg.GetComponent<PromtPopUp>().showFake();
     }
 
     public IEnumerator Win()
@@ -253,6 +261,7 @@ public class GameManager : MonoBehaviour
         DestroyHandObj();
         if (level == 1)
         {
+            ShowFake();
             playersLoss.gameObject.SetActive(true);
             playersLoss.GetComponent<FloatingTextEffect>().ShowFloatingTextMinus("290");
             cashTxt.text = (Int32.Parse(cashTxt.text) - 290).ToString();
@@ -268,12 +277,19 @@ public class GameManager : MonoBehaviour
         }
         if (level == 3)
         {
+            bidFail = true;
+            ShowFake();
             playersLoss.gameObject.SetActive(true);
             playersLoss.GetComponent<FloatingTextEffect>().ShowFloatingTextMinus("180");
             cashTxt.text = (Int32.Parse(cashTxt.text) - 180).ToString();
-            if(bidFail)
+            if (bidFail)
+            {
                 fail = true;
-            win = true;
+            }
+            else
+            {
+                win = true;
+            }
         }
         level++;
     }
@@ -291,6 +307,7 @@ public class GameManager : MonoBehaviour
         DestroyHandObj();
         if (level == 1)
         {
+            ShowFake();
             biddersLossTxt.gameObject.SetActive(true);
             biddersLossTxt.GetComponent<FloatingTextEffect>().ShowFloatingTextMinus("190");
         }
@@ -303,6 +320,7 @@ public class GameManager : MonoBehaviour
         }
         if (level == 3)
         {
+            ShowFake();
             biddersLossTxt.gameObject.SetActive(true);
             biddersLossTxt.GetComponent<FloatingTextEffect>().ShowFloatingTextMinus("130");
             if (bidFail)

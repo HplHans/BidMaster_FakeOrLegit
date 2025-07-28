@@ -1,5 +1,5 @@
 /**
- * @version 1.0.9320.26346
+ * @version 1.0.9320.41312
  * @copyright anton
  * @compiler Bridge.NET 17.9.42-luna
  */
@@ -3626,6 +3626,7 @@ Bridge.assembly("UnityScriptsCompiler", function ($asm, globals) {
             playersPlus: null,
             AuthenticImg: null,
             profitImg: null,
+            fakeImg: null,
             cashTxt: null,
             failBidCanvas: null,
             failPassCanvas: null,
@@ -3674,6 +3675,7 @@ Bridge.assembly("UnityScriptsCompiler", function ($asm, globals) {
                 seq.AppendWaitUntil(Bridge.fn.bind(this, function () {
                     return this.level === 2;
                 }));
+                seq.AppendDelay(2);
                 seq.Append(Bridge.fn.bind(this, function () {
                     this.SetLevel(2);
                 }));
@@ -3687,7 +3689,7 @@ Bridge.assembly("UnityScriptsCompiler", function ($asm, globals) {
                 seq.AppendWaitUntil(Bridge.fn.bind(this, function () {
                     return this.win === true;
                 }));
-                seq.AppendDelay(1);
+                seq.AppendDelay(3);
                 seq.Append(Bridge.fn.bind(this, function () {
                     this.StartCoroutine$1(this.Win());
                 }));
@@ -3712,6 +3714,13 @@ Bridge.assembly("UnityScriptsCompiler", function ($asm, globals) {
                 seq2.Start();
             },
             /*GameManager.Start end.*/
+
+            /*GameManager.ShowFake start.*/
+            ShowFake: function () {
+                this.fakeImg.SetActive(true);
+                this.fakeImg.GetComponent(PromtPopUp).showFake();
+            },
+            /*GameManager.ShowFake end.*/
 
             /*GameManager.Win start.*/
             Win: function () {
@@ -4057,6 +4066,7 @@ Bridge.assembly("UnityScriptsCompiler", function ($asm, globals) {
                 AudioManager.Instance.PlaySFX("OnClick");
                 this.DestroyHandObj();
                 if (this.level === 1) {
+                    this.ShowFake();
                     this.playersLoss.gameObject.SetActive(true);
                     this.playersLoss.GetComponent(FloatingTextEffect).ShowFloatingTextMinus("290");
                     this.cashTxt.text = Bridge.toString((((System.Int32.parse(this.cashTxt.text) - 290) | 0)));
@@ -4070,13 +4080,16 @@ Bridge.assembly("UnityScriptsCompiler", function ($asm, globals) {
                     this.cashTxt.text = Bridge.toString((((System.Int32.parse(this.cashTxt.text) + 50) | 0)));
                 }
                 if (this.level === 3) {
+                    this.bidFail = true;
+                    this.ShowFake();
                     this.playersLoss.gameObject.SetActive(true);
                     this.playersLoss.GetComponent(FloatingTextEffect).ShowFloatingTextMinus("180");
                     this.cashTxt.text = Bridge.toString((((System.Int32.parse(this.cashTxt.text) - 180) | 0)));
                     if (this.bidFail) {
                         this.fail = true;
+                    } else {
+                        this.win = true;
                     }
-                    this.win = true;
                 }
                 this.level = (this.level + 1) | 0;
             },
@@ -4094,6 +4107,7 @@ Bridge.assembly("UnityScriptsCompiler", function ($asm, globals) {
                 AudioManager.Instance.PlaySFX("OnClick");
                 this.DestroyHandObj();
                 if (this.level === 1) {
+                    this.ShowFake();
                     this.biddersLossTxt.gameObject.SetActive(true);
                     this.biddersLossTxt.GetComponent(FloatingTextEffect).ShowFloatingTextMinus("190");
                 }
@@ -4104,6 +4118,7 @@ Bridge.assembly("UnityScriptsCompiler", function ($asm, globals) {
                     this.passFail = true;
                 }
                 if (this.level === 3) {
+                    this.ShowFake();
                     this.biddersLossTxt.gameObject.SetActive(true);
                     this.biddersLossTxt.GetComponent(FloatingTextEffect).ShowFloatingTextMinus("130");
                     if (this.bidFail) {
@@ -4159,6 +4174,7 @@ Bridge.assembly("UnityScriptsCompiler", function ($asm, globals) {
     Bridge.define("PromtPopUp", {
         inherits: [UnityEngine.MonoBehaviour],
         fields: {
+            fake: false,
             DestroyGameObject: false
         },
         methods: {
@@ -4171,11 +4187,27 @@ Bridge.assembly("UnityScriptsCompiler", function ($asm, globals) {
                 var s = DG.Tweening.DOTween.Sequence();
                 DG.Tweening.TweenSettingsExtensions.OnComplete(DG.Tweening.Sequence, DG.Tweening.TweenSettingsExtensions.AppendInterval(DG.Tweening.TweenSettingsExtensions.Append(s, DG.Tweening.TweenSettingsExtensions.SetEase$2(DG.Tweening.Core.TweenerCore$3(UnityEngine.Vector3,UnityEngine.Vector3,DG.Tweening.Plugins.Options.VectorOptions), DG.Tweening.ShortcutExtensions.DOScale$1(this.transform, new pc.Vec3( 0.833884, 0.833884, 0.833884 ), 1.0), DG.Tweening.Ease.OutBack)), 2.0), Bridge.fn.bind(this, function () {
                     if (this.DestroyGameObject) {
-                        UnityEngine.MonoBehaviour.Destroy(this.gameObject);
+                        this.gameObject.SetActive(false);
                     }
                 }));
             },
             /*PromtPopUp.Start end.*/
+
+            /*PromtPopUp.showFake start.*/
+            showFake: function () {
+                UnityEngine.Debug.Log$1("Start fake");
+                AudioManager.Instance.PlaySFX("OnPop");
+                // Start small and invisible
+                this.transform.localScale = new pc.Vec3( 1.4, 1.4, 1.4 );
+                // Animate to full scale and full opacity
+                var s1 = DG.Tweening.DOTween.Sequence();
+                DG.Tweening.TweenSettingsExtensions.OnComplete(DG.Tweening.Sequence, DG.Tweening.TweenSettingsExtensions.AppendInterval(DG.Tweening.TweenSettingsExtensions.Append(s1, DG.Tweening.TweenSettingsExtensions.SetEase$2(DG.Tweening.Core.TweenerCore$3(UnityEngine.Vector3,UnityEngine.Vector3,DG.Tweening.Plugins.Options.VectorOptions), DG.Tweening.ShortcutExtensions.DOScale$1(this.transform, new pc.Vec3( 0.833884, 0.833884, 0.833884 ), 0.5), DG.Tweening.Ease.InOutFlash)), 1.0), Bridge.fn.bind(this, function () {
+                    if (this.DestroyGameObject) {
+                        this.gameObject.SetActive(false);
+                    }
+                }));
+            },
+            /*PromtPopUp.showFake end.*/
 
 
         }
@@ -5932,7 +5964,7 @@ Bridge.assembly("UnityScriptsCompiler", function ($asm, globals) {
     /*FloatingTextEffect end.*/
 
     /*GameManager start.*/
-    $m("GameManager", function () { return {"nested":[GameManager.GameState],"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"AddScore","t":8,"pi":[{"n":"amount","pt":$n[0].Int32,"ps":0}],"sn":"AddScore","rt":$n[0].Void,"p":[$n[0].Int32]},{"a":1,"n":"Awake","t":8,"sn":"Awake","rt":$n[0].Void},{"a":2,"n":"Bid","t":8,"sn":"Bid","rt":$n[0].Void},{"a":2,"n":"CTAClicked","t":8,"sn":"CTAClicked","rt":$n[0].Void},{"a":2,"n":"ChangeState","t":8,"pi":[{"n":"newState","pt":GameManager.GameState,"ps":0}],"sn":"ChangeState","rt":$n[0].Void,"p":[GameManager.GameState]},{"a":1,"n":"DestroyHandObj","t":8,"sn":"DestroyHandObj","rt":$n[0].Void},{"a":2,"n":"FailBid","t":8,"sn":"FailBid","rt":$n[3].IEnumerator},{"a":2,"n":"FailPass","t":8,"sn":"FailPass","rt":$n[3].IEnumerator},{"a":2,"n":"ItemsMove","t":8,"pi":[{"n":"pos","pt":$n[0].Int32,"ps":0}],"sn":"ItemsMove","rt":$n[3].IEnumerator,"p":[$n[0].Int32]},{"a":2,"n":"Pass","t":8,"sn":"Pass","rt":$n[0].Void},{"a":2,"n":"ResetScore","t":8,"sn":"ResetScore","rt":$n[0].Void},{"a":2,"n":"RestartGame","t":8,"sn":"RestartGame","rt":$n[0].Void},{"a":1,"n":"SetLevel","t":8,"pi":[{"n":"lvl","pt":$n[0].Int32,"ps":0}],"sn":"SetLevel","rt":$n[0].Void,"p":[$n[0].Int32]},{"a":1,"n":"Start","t":8,"sn":"Start","rt":$n[0].Void},{"a":2,"n":"StartBidding","t":8,"sn":"StartBidding","rt":$n[3].IEnumerator},{"a":2,"n":"StartMusic","t":8,"sn":"StartMusic","rt":$n[0].Void},{"a":2,"n":"Win","t":8,"sn":"Win","rt":$n[3].IEnumerator},{"a":2,"n":"CurrentScore","t":16,"rt":$n[0].Int32,"g":{"a":2,"n":"get_CurrentScore","t":8,"rt":$n[0].Int32,"fg":"CurrentScore","box":function ($v) { return Bridge.box($v, System.Int32);}},"s":{"a":2,"n":"set_CurrentScore","t":8,"p":[$n[0].Int32],"rt":$n[0].Void,"fs":"CurrentScore"},"fn":"CurrentScore"},{"a":2,"n":"CurrentState","t":16,"rt":GameManager.GameState,"g":{"a":2,"n":"get_CurrentState","t":8,"rt":GameManager.GameState,"fg":"CurrentState","box":function ($v) { return Bridge.box($v, GameManager.GameState, System.Enum.toStringFn(GameManager.GameState));}},"s":{"a":1,"n":"set_CurrentState","t":8,"p":[GameManager.GameState],"rt":$n[0].Void,"fs":"CurrentState"},"fn":"CurrentState"},{"a":2,"n":"AuthenticImg","t":4,"rt":$n[2].GameObject,"sn":"AuthenticImg"},{"a":2,"n":"Instance","is":true,"t":4,"rt":GameManager,"sn":"Instance"},{"a":2,"n":"animPos","t":4,"rt":$n[0].Array.type(System.Int32),"sn":"animPos"},{"a":2,"n":"animator","t":4,"rt":$n[2].Animator,"sn":"animator"},{"a":2,"n":"bidFail","t":4,"rt":$n[0].Boolean,"sn":"bidFail","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"biddersBubble","t":4,"rt":System.Array.type(UnityEngine.GameObject),"sn":"biddersBubble"},{"a":2,"n":"biddersLossPlus","t":4,"rt":$n[2].GameObject,"sn":"biddersLossPlus"},{"a":2,"n":"biddersLossTxt","t":4,"rt":$n[2].GameObject,"sn":"biddersLossTxt"},{"a":2,"n":"btnGroup","t":4,"rt":$n[2].GameObject,"sn":"btnGroup"},{"a":2,"n":"cashTxt","t":4,"rt":$n[6].TMP_Text,"sn":"cashTxt"},{"a":2,"n":"currentScore","t":4,"rt":$n[0].Int32,"sn":"currentScore","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"enableSound","t":4,"rt":$n[0].Boolean,"sn":"enableSound","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"end","t":4,"rt":$n[0].Boolean,"sn":"end","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"endPanel","t":4,"rt":$n[2].GameObject,"sn":"endPanel"},{"a":2,"n":"endPanelAnimator","t":4,"rt":CanvasGroupAnimator,"sn":"endPanelAnimator"},{"a":2,"n":"endPlay","t":4,"rt":$n[0].Boolean,"sn":"endPlay","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"fail","t":4,"rt":$n[0].Boolean,"sn":"fail","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"failBidCanvas","t":4,"rt":CanvasGroupAnimator,"sn":"failBidCanvas"},{"a":2,"n":"failPassCanvas","t":4,"rt":CanvasGroupAnimator,"sn":"failPassCanvas"},{"a":2,"n":"hand","t":4,"rt":$n[2].GameObject,"sn":"hand"},{"a":2,"n":"itemValue","t":4,"rt":$n[0].Int32,"sn":"itemValue","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"items","t":4,"rt":$n[1].List$1(DataObject),"sn":"items"},{"a":2,"n":"itemsParent","t":4,"rt":$n[2].RectTransform,"sn":"itemsParent"},{"a":2,"n":"level","t":4,"rt":$n[0].Int32,"sn":"level","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"message2","t":4,"rt":$n[2].GameObject,"sn":"message2"},{"a":2,"n":"passFail","t":4,"rt":$n[0].Boolean,"sn":"passFail","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"playersLoss","t":4,"rt":$n[2].GameObject,"sn":"playersLoss"},{"a":2,"n":"playersPlus","t":4,"rt":$n[2].GameObject,"sn":"playersPlus"},{"a":2,"n":"profitImg","t":4,"rt":$n[2].GameObject,"sn":"profitImg"},{"a":2,"n":"scoreTxt","t":4,"rt":$n[6].TMP_Text,"sn":"scoreTxt"},{"a":2,"n":"startClickHandler","t":4,"rt":StartClickHandler,"sn":"startClickHandler"},{"a":2,"n":"win","t":4,"rt":$n[0].Boolean,"sn":"win","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"backing":true,"n":"<CurrentState>k__BackingField","t":4,"rt":GameManager.GameState,"sn":"CurrentState","box":function ($v) { return Bridge.box($v, GameManager.GameState, System.Enum.toStringFn(GameManager.GameState));}}]}; }, $n);
+    $m("GameManager", function () { return {"nested":[GameManager.GameState],"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"AddScore","t":8,"pi":[{"n":"amount","pt":$n[0].Int32,"ps":0}],"sn":"AddScore","rt":$n[0].Void,"p":[$n[0].Int32]},{"a":1,"n":"Awake","t":8,"sn":"Awake","rt":$n[0].Void},{"a":2,"n":"Bid","t":8,"sn":"Bid","rt":$n[0].Void},{"a":2,"n":"CTAClicked","t":8,"sn":"CTAClicked","rt":$n[0].Void},{"a":2,"n":"ChangeState","t":8,"pi":[{"n":"newState","pt":GameManager.GameState,"ps":0}],"sn":"ChangeState","rt":$n[0].Void,"p":[GameManager.GameState]},{"a":1,"n":"DestroyHandObj","t":8,"sn":"DestroyHandObj","rt":$n[0].Void},{"a":2,"n":"FailBid","t":8,"sn":"FailBid","rt":$n[3].IEnumerator},{"a":2,"n":"FailPass","t":8,"sn":"FailPass","rt":$n[3].IEnumerator},{"a":2,"n":"ItemsMove","t":8,"pi":[{"n":"pos","pt":$n[0].Int32,"ps":0}],"sn":"ItemsMove","rt":$n[3].IEnumerator,"p":[$n[0].Int32]},{"a":2,"n":"Pass","t":8,"sn":"Pass","rt":$n[0].Void},{"a":2,"n":"ResetScore","t":8,"sn":"ResetScore","rt":$n[0].Void},{"a":2,"n":"RestartGame","t":8,"sn":"RestartGame","rt":$n[0].Void},{"a":1,"n":"SetLevel","t":8,"pi":[{"n":"lvl","pt":$n[0].Int32,"ps":0}],"sn":"SetLevel","rt":$n[0].Void,"p":[$n[0].Int32]},{"a":2,"n":"ShowFake","t":8,"sn":"ShowFake","rt":$n[0].Void},{"a":1,"n":"Start","t":8,"sn":"Start","rt":$n[0].Void},{"a":2,"n":"StartBidding","t":8,"sn":"StartBidding","rt":$n[3].IEnumerator},{"a":2,"n":"StartMusic","t":8,"sn":"StartMusic","rt":$n[0].Void},{"a":2,"n":"Win","t":8,"sn":"Win","rt":$n[3].IEnumerator},{"a":2,"n":"CurrentScore","t":16,"rt":$n[0].Int32,"g":{"a":2,"n":"get_CurrentScore","t":8,"rt":$n[0].Int32,"fg":"CurrentScore","box":function ($v) { return Bridge.box($v, System.Int32);}},"s":{"a":2,"n":"set_CurrentScore","t":8,"p":[$n[0].Int32],"rt":$n[0].Void,"fs":"CurrentScore"},"fn":"CurrentScore"},{"a":2,"n":"CurrentState","t":16,"rt":GameManager.GameState,"g":{"a":2,"n":"get_CurrentState","t":8,"rt":GameManager.GameState,"fg":"CurrentState","box":function ($v) { return Bridge.box($v, GameManager.GameState, System.Enum.toStringFn(GameManager.GameState));}},"s":{"a":1,"n":"set_CurrentState","t":8,"p":[GameManager.GameState],"rt":$n[0].Void,"fs":"CurrentState"},"fn":"CurrentState"},{"a":2,"n":"AuthenticImg","t":4,"rt":$n[2].GameObject,"sn":"AuthenticImg"},{"a":2,"n":"Instance","is":true,"t":4,"rt":GameManager,"sn":"Instance"},{"a":2,"n":"animPos","t":4,"rt":$n[0].Array.type(System.Int32),"sn":"animPos"},{"a":2,"n":"animator","t":4,"rt":$n[2].Animator,"sn":"animator"},{"a":2,"n":"bidFail","t":4,"rt":$n[0].Boolean,"sn":"bidFail","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"biddersBubble","t":4,"rt":System.Array.type(UnityEngine.GameObject),"sn":"biddersBubble"},{"a":2,"n":"biddersLossPlus","t":4,"rt":$n[2].GameObject,"sn":"biddersLossPlus"},{"a":2,"n":"biddersLossTxt","t":4,"rt":$n[2].GameObject,"sn":"biddersLossTxt"},{"a":2,"n":"btnGroup","t":4,"rt":$n[2].GameObject,"sn":"btnGroup"},{"a":2,"n":"cashTxt","t":4,"rt":$n[6].TMP_Text,"sn":"cashTxt"},{"a":2,"n":"currentScore","t":4,"rt":$n[0].Int32,"sn":"currentScore","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"enableSound","t":4,"rt":$n[0].Boolean,"sn":"enableSound","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"end","t":4,"rt":$n[0].Boolean,"sn":"end","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"endPanel","t":4,"rt":$n[2].GameObject,"sn":"endPanel"},{"a":2,"n":"endPanelAnimator","t":4,"rt":CanvasGroupAnimator,"sn":"endPanelAnimator"},{"a":2,"n":"endPlay","t":4,"rt":$n[0].Boolean,"sn":"endPlay","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"fail","t":4,"rt":$n[0].Boolean,"sn":"fail","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"failBidCanvas","t":4,"rt":CanvasGroupAnimator,"sn":"failBidCanvas"},{"a":2,"n":"failPassCanvas","t":4,"rt":CanvasGroupAnimator,"sn":"failPassCanvas"},{"a":2,"n":"fakeImg","t":4,"rt":$n[2].GameObject,"sn":"fakeImg"},{"a":2,"n":"hand","t":4,"rt":$n[2].GameObject,"sn":"hand"},{"a":2,"n":"itemValue","t":4,"rt":$n[0].Int32,"sn":"itemValue","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"items","t":4,"rt":$n[1].List$1(DataObject),"sn":"items"},{"a":2,"n":"itemsParent","t":4,"rt":$n[2].RectTransform,"sn":"itemsParent"},{"a":2,"n":"level","t":4,"rt":$n[0].Int32,"sn":"level","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"message2","t":4,"rt":$n[2].GameObject,"sn":"message2"},{"a":2,"n":"passFail","t":4,"rt":$n[0].Boolean,"sn":"passFail","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"playersLoss","t":4,"rt":$n[2].GameObject,"sn":"playersLoss"},{"a":2,"n":"playersPlus","t":4,"rt":$n[2].GameObject,"sn":"playersPlus"},{"a":2,"n":"profitImg","t":4,"rt":$n[2].GameObject,"sn":"profitImg"},{"a":2,"n":"scoreTxt","t":4,"rt":$n[6].TMP_Text,"sn":"scoreTxt"},{"a":2,"n":"startClickHandler","t":4,"rt":StartClickHandler,"sn":"startClickHandler"},{"a":2,"n":"win","t":4,"rt":$n[0].Boolean,"sn":"win","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"backing":true,"n":"<CurrentState>k__BackingField","t":4,"rt":GameManager.GameState,"sn":"CurrentState","box":function ($v) { return Bridge.box($v, GameManager.GameState, System.Enum.toStringFn(GameManager.GameState));}}]}; }, $n);
     /*GameManager end.*/
 
     /*GameManager+GameState start.*/
@@ -5940,7 +5972,7 @@ Bridge.assembly("UnityScriptsCompiler", function ($asm, globals) {
     /*GameManager+GameState end.*/
 
     /*PromtPopUp start.*/
-    $m("PromtPopUp", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"Start","t":8,"sn":"Start","rt":$n[0].Void},{"a":2,"n":"DestroyGameObject","t":4,"rt":$n[0].Boolean,"sn":"DestroyGameObject","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}}]}; }, $n);
+    $m("PromtPopUp", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"Start","t":8,"sn":"Start","rt":$n[0].Void},{"a":2,"n":"showFake","t":8,"sn":"showFake","rt":$n[0].Void},{"a":2,"n":"DestroyGameObject","t":4,"rt":$n[0].Boolean,"sn":"DestroyGameObject","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"fake","t":4,"rt":$n[0].Boolean,"sn":"fake","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}}]}; }, $n);
     /*PromtPopUp end.*/
 
     /*StartClickHandler start.*/
