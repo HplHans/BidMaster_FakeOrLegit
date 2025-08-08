@@ -1,8 +1,8 @@
 {
     "version": "6.3.0",
     "projectId": "fb3dab522ff319d4ca458a16fd743c6d",
-    "applicationID": 31210,
-    "creativeName": "LegitOrFake",
+    "applicationID": 32022,
+    "creativeName": "LegitOrFake-2025-08-07",
     "pgServer": "EU",
     "window": {
         "‐″": true
@@ -83,8 +83,8 @@
             "externalSources": [],
             "externalJSLibraries": [],
             "scriptingDefines": [],
-            "msbuildVersion": "17.13",
-            "monoVersion": "9.0.4",
+            "msbuildVersion": "17.14",
+            "monoVersion": "9.0.7",
             "dotnetVersion": ""
         },
         "assets": {
@@ -16895,7 +16895,7 @@
                     },
                     {
                         "name": "name#get",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "name#set",
@@ -26673,7 +26673,7 @@
                     },
                     {
                         "name": "InsertNewLine",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "SaveWordWrappingState",
@@ -26681,7 +26681,7 @@
                     },
                     {
                         "name": "RestoreWordWrappingState",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "SaveGlyphVertexInfo",
@@ -27699,7 +27699,7 @@
                     },
                     {
                         "name": "defaultFontAsset#get",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "defaultFontAssetPath#get",
@@ -28997,7 +28997,7 @@
                     },
                     {
                         "name": "fontWeightTable#get",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "fontWeightTable#set",
@@ -32642,6 +32642,46 @@
                         "excluded": false
                     }
                 ]
+            },
+            {
+                "className": "SetConditionMet",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Start",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Update",
+                        "excluded": false
+                    },
+                    {
+                        "name": "SetConditon",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "LevelImageSwitcher",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "LevelImageCount#get",
+                        "excluded": false
+                    },
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Start",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ChangeImage",
+                        "excluded": false
+                    }
+                ]
             }
         ],
         "stubberDataList": [],
@@ -32731,7 +32771,18 @@
                     "script": "",
                     "ext": ""
                 },
-                "overrides": []
+                "overrides": [
+                    {
+                        "channels": 1,
+                        "startTime": "00:00.000",
+                        "endTime": "00:30.000",
+                        "lengthInSeconds": 30.0,
+                        "bitrate": 64,
+                        "script": "",
+                        "ext": "",
+                        "name": "Assets/Audio/BGM.mp3"
+                    }
+                ]
             },
             "font": {
                 "default": {

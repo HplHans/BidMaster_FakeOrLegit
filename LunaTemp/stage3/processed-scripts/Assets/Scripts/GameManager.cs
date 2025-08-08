@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public GameObject endPanel;
     public CanvasGroupAnimator endPanelAnimator;
+    public LevelImageSwitcher levelImageSwitcher;
     public TMP_Text scoreTxt;
     public bool end;
     public bool endPlay;
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
     public StartClickHandler startClickHandler;
     public int itemValue;
     public GameObject[] biddersBubble;
+    public GameObject promptBubble;
     public GameObject btnGroup;
     public GameObject biddersLossTxt;
     public GameObject biddersLossPlus;
@@ -40,6 +42,8 @@ public class GameManager : MonoBehaviour
     public bool fail;
     public bool bidFail;
     public bool passFail;
+    public bool conditionMet;
+    
     public enum GameState { MainMenu, Playing, Paused, GameOver }
     public GameState CurrentState { get; private set; }
     public int currentScore;
@@ -66,6 +70,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         level = 1;
+        SetLevel(1);
         ChangeState(GameState.MainMenu);
         items = DataManager.Instance.GetList("Items");
         var seq = TaskManager.Instance.CreateSequence();
@@ -208,16 +213,41 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < biddersBubble.Length; i++)
         {
-            biddersBubble[i].gameObject.SetActive(true);
             AudioManager.Instance.PlaySFX("OnBid");
             if(i == 0)
-                biddersBubble[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = items[level - 1].bidder1Bid;
+            {
+                Debug.Log("0");
+                biddersBubble[0].gameObject.SetActive(true);
+                biddersBubble[0].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = items[level - 1].bidder1Bid;
+            }
+                
             if (i == 1)
-                biddersBubble[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = items[level - 1].bidder2Bid;
+            {
+                Debug.Log("1");
+                biddersBubble[1].gameObject.SetActive(true);
+                biddersBubble[1].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = items[level - 1].bidder2Bid;
+            }
+                
             if (i == 2)
-                biddersBubble[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = items[level - 1].bidder3Bid;
+            {
+                Debug.Log("2");
+                biddersBubble[2].gameObject.SetActive(true);
+                biddersBubble[2].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = items[level - 1].bidder3Bid;
+            }
+                
             if (i == 3)
-                biddersBubble[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = items[level - 1].playerBid;
+            {
+                Debug.Log("3");
+                if (!conditionMet)
+                {
+                    promptBubble.gameObject.SetActive(true);
+                    yield return new WaitUntil(() => conditionMet);
+                    promptBubble.gameObject.SetActive(false);
+                }
+                biddersBubble[3].gameObject.SetActive(true);
+                biddersBubble[3].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = items[level - 1].playerBid;
+            }
+                
             if (i == 3 && i <= 3)
             {
                 btnGroup.gameObject.SetActive(true);
@@ -231,6 +261,14 @@ public class GameManager : MonoBehaviour
     void SetLevel(int lvl)
     {
         StartCoroutine(ItemsMove(lvl - 1));
+        level = lvl;
+
+        // Make sure glow updates immediately
+        if (levelImageSwitcher != null && lvl > 0 && lvl <= levelImageSwitcher.LevelImageCount)
+        {
+            levelImageSwitcher.ChangeImage(lvl - 1);
+        }
+
         switch (lvl)
         {
             case 1:
@@ -292,6 +330,7 @@ public class GameManager : MonoBehaviour
             }
         }
         level++;
+        conditionMet = false;
     }
     public void Pass()
     {
@@ -333,5 +372,6 @@ public class GameManager : MonoBehaviour
             }     
         }
         level++;
+        conditionMet = false;
     }
 }

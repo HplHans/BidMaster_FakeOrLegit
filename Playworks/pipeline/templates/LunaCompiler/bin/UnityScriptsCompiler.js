@@ -1,5 +1,5 @@
 /**
- * @version 1.0.9320.41312
+ * @version 1.0.9351.19231
  * @copyright anton
  * @compiler Bridge.NET 17.9.42-luna
  */
@@ -3605,6 +3605,7 @@ Bridge.assembly("UnityScriptsCompiler", function ($asm, globals) {
         fields: {
             endPanel: null,
             endPanelAnimator: null,
+            levelImageSwitcher: null,
             scoreTxt: null,
             end: false,
             endPlay: false,
@@ -3619,6 +3620,7 @@ Bridge.assembly("UnityScriptsCompiler", function ($asm, globals) {
             startClickHandler: null,
             itemValue: 0,
             biddersBubble: null,
+            promptBubble: null,
             btnGroup: null,
             biddersLossTxt: null,
             biddersLossPlus: null,
@@ -3634,6 +3636,7 @@ Bridge.assembly("UnityScriptsCompiler", function ($asm, globals) {
             fail: false,
             bidFail: false,
             passFail: false,
+            conditionMet: false,
             CurrentState: 0,
             currentScore: 0
         },
@@ -3663,6 +3666,7 @@ Bridge.assembly("UnityScriptsCompiler", function ($asm, globals) {
             /*GameManager.Start start.*/
             Start: function () {
                 this.level = 1;
+                this.SetLevel(1);
                 this.ChangeState(GameManager.GameState.MainMenu);
                 this.items = DataManager.Instance.GetList("Items");
                 var seq = TaskManager.Instance.CreateSequence();
@@ -3982,43 +3986,84 @@ Bridge.assembly("UnityScriptsCompiler", function ($asm, globals) {
                                             $step = 2;
                                             continue;
                                         }
-                                    $step = 5;
+                                    $step = 10;
                                     continue;
                                 }
                                 case 2: {
-                                    this.biddersBubble[i].gameObject.SetActive(true);
-                                        AudioManager.Instance.PlaySFX("OnBid");
+                                    AudioManager.Instance.PlaySFX("OnBid");
                                         if (i === 0) {
-                                            this.biddersBubble[i].transform.GetChild(0).GetComponent(TMPro.TextMeshProUGUI).text = this.items.getItem(((this.level - 1) | 0)).bidder1Bid;
+                                            UnityEngine.Debug.Log$1("0");
+                                            this.biddersBubble[0].gameObject.SetActive(true);
+                                            this.biddersBubble[0].transform.GetChild(0).GetComponent(TMPro.TextMeshProUGUI).text = this.items.getItem(((this.level - 1) | 0)).bidder1Bid;
                                         }
+
                                         if (i === 1) {
-                                            this.biddersBubble[i].transform.GetChild(0).GetComponent(TMPro.TextMeshProUGUI).text = this.items.getItem(((this.level - 1) | 0)).bidder2Bid;
+                                            UnityEngine.Debug.Log$1("1");
+                                            this.biddersBubble[1].gameObject.SetActive(true);
+                                            this.biddersBubble[1].transform.GetChild(0).GetComponent(TMPro.TextMeshProUGUI).text = this.items.getItem(((this.level - 1) | 0)).bidder2Bid;
                                         }
+
                                         if (i === 2) {
-                                            this.biddersBubble[i].transform.GetChild(0).GetComponent(TMPro.TextMeshProUGUI).text = this.items.getItem(((this.level - 1) | 0)).bidder3Bid;
+                                            UnityEngine.Debug.Log$1("2");
+                                            this.biddersBubble[2].gameObject.SetActive(true);
+                                            this.biddersBubble[2].transform.GetChild(0).GetComponent(TMPro.TextMeshProUGUI).text = this.items.getItem(((this.level - 1) | 0)).bidder3Bid;
                                         }
+
                                         if (i === 3) {
-                                            this.biddersBubble[i].transform.GetChild(0).GetComponent(TMPro.TextMeshProUGUI).text = this.items.getItem(((this.level - 1) | 0)).playerBid;
-                                        }
-                                        if (i === 3 && i <= 3) {
+                                            $step = 3;
+                                            continue;
+                                        } 
+                                        $step = 7;
+                                        continue;
+                                }
+                                case 3: {
+                                    UnityEngine.Debug.Log$1("3");
+                                        if (!this.conditionMet) {
+                                            $step = 4;
+                                            continue;
+                                        } 
+                                        $step = 6;
+                                        continue;
+                                }
+                                case 4: {
+                                    this.promptBubble.gameObject.SetActive(true);
+                                        $enumerator.current = new UnityEngine.WaitUntil(Bridge.fn.bind(this, function () {
+                                            return this.conditionMet;
+                                        }));
+                                        $step = 5;
+                                        return true;
+                                }
+                                case 5: {
+                                    this.promptBubble.gameObject.SetActive(false);
+                                    $step = 6;
+                                    continue;
+                                }
+                                case 6: {
+                                    this.biddersBubble[3].gameObject.SetActive(true);
+                                        this.biddersBubble[3].transform.GetChild(0).GetComponent(TMPro.TextMeshProUGUI).text = this.items.getItem(((this.level - 1) | 0)).playerBid;
+                                    $step = 7;
+                                    continue;
+                                }
+                                case 7: {
+                                    if (i === 3 && i <= 3) {
                                             this.btnGroup.gameObject.SetActive(true);
                                             this.btnGroup.transform.GetComponent(UnityEngine.CanvasGroup).interactable = true;
                                             this.btnGroup.transform.GetComponent(CanvasGroupAnimator).TriggerAnimate();
                                         }
                                         $enumerator.current = new UnityEngine.WaitForSeconds(0.5);
-                                        $step = 3;
+                                        $step = 8;
                                         return true;
                                 }
-                                case 3: {
-                                    $step = 4;
+                                case 8: {
+                                    $step = 9;
                                     continue;
                                 }
-                                case 4: {
+                                case 9: {
                                     i = (i + 1) | 0;
                                     $step = 1;
                                     continue;
                                 }
-                                case 5: {
+                                case 10: {
 
                                 }
                                 default: {
@@ -4038,6 +4083,13 @@ Bridge.assembly("UnityScriptsCompiler", function ($asm, globals) {
             /*GameManager.SetLevel start.*/
             SetLevel: function (lvl) {
                 this.StartCoroutine$1(this.ItemsMove(((lvl - 1) | 0)));
+                this.level = lvl;
+
+                // Make sure glow updates immediately
+                if (UnityEngine.MonoBehaviour.op_Inequality(this.levelImageSwitcher, null) && lvl > 0 && lvl <= this.levelImageSwitcher.LevelImageCount) {
+                    this.levelImageSwitcher.ChangeImage(((lvl - 1) | 0));
+                }
+
                 switch (lvl) {
                     case 1: 
                         this.itemValue = this.items.getItem(0).assetValue;
@@ -4092,6 +4144,7 @@ Bridge.assembly("UnityScriptsCompiler", function ($asm, globals) {
                     }
                 }
                 this.level = (this.level + 1) | 0;
+                this.conditionMet = false;
             },
             /*GameManager.Bid end.*/
 
@@ -4128,6 +4181,7 @@ Bridge.assembly("UnityScriptsCompiler", function ($asm, globals) {
                     }
                 }
                 this.level = (this.level + 1) | 0;
+                this.conditionMet = false;
             },
             /*GameManager.Pass end.*/
 
@@ -4155,6 +4209,64 @@ Bridge.assembly("UnityScriptsCompiler", function ($asm, globals) {
         inherits: [UnityEngine.MonoBehaviour]
     });
     /*IAmAnEmptyScriptJustToMakeCodelessProjectsCompileProperty end.*/
+
+    /*LevelImageSwitcher start.*/
+    Bridge.define("LevelImageSwitcher", {
+        inherits: [UnityEngine.MonoBehaviour],
+        fields: {
+            levelImages: null,
+            currentIndex: 0
+        },
+        props: {
+            LevelImageCount: {
+                get: function () {
+                    return this.levelImages.length;
+                }
+            }
+        },
+        ctors: {
+            init: function () {
+                this.currentIndex = 0;
+            }
+        },
+        methods: {
+            /*LevelImageSwitcher.Start start.*/
+            Start: function () {
+                for (var i = 0; i < this.levelImages.length; i = (i + 1) | 0) {
+                    this.levelImages[i].SetActive(i === 0); // Only first image active at start
+                }
+                this.currentIndex = 0;
+            },
+            /*LevelImageSwitcher.Start end.*/
+
+            /*LevelImageSwitcher.ChangeImage start.*/
+            ChangeImage: function (newIndex) {
+                // Clamp the index to a valid range
+                if (this.levelImages == null || this.levelImages.length === 0) {
+                    return;
+                }
+                if (newIndex < 0) {
+                    newIndex = 0;
+                }
+                if (newIndex >= this.levelImages.length) {
+                    newIndex = (this.levelImages.length - 1) | 0;
+                }
+
+                // Disable current glow
+                this.levelImages[this.currentIndex].SetActive(false);
+
+                // Enable new glow
+                this.levelImages[newIndex].SetActive(true);
+
+                // Update index
+                this.currentIndex = newIndex;
+            },
+            /*LevelImageSwitcher.ChangeImage end.*/
+
+
+        }
+    });
+    /*LevelImageSwitcher end.*/
 
     /*ListDataEntry start.*/
     Bridge.define("ListDataEntry", {
@@ -4213,6 +4325,33 @@ Bridge.assembly("UnityScriptsCompiler", function ($asm, globals) {
         }
     });
     /*PromtPopUp end.*/
+
+    /*SetConditionMet start.*/
+    Bridge.define("SetConditionMet", {
+        inherits: [UnityEngine.MonoBehaviour],
+        methods: {
+            /*SetConditionMet.Start start.*/
+            Start: function () {
+
+            },
+            /*SetConditionMet.Start end.*/
+
+            /*SetConditionMet.Update start.*/
+            Update: function () {
+
+            },
+            /*SetConditionMet.Update end.*/
+
+            /*SetConditionMet.SetConditon start.*/
+            SetConditon: function () {
+                GameManager.Instance.conditionMet = true;
+            },
+            /*SetConditionMet.SetConditon end.*/
+
+
+        }
+    });
+    /*SetConditionMet end.*/
 
     /*SingleDataEntry start.*/
     Bridge.define("SingleDataEntry", {
@@ -5964,16 +6103,24 @@ Bridge.assembly("UnityScriptsCompiler", function ($asm, globals) {
     /*FloatingTextEffect end.*/
 
     /*GameManager start.*/
-    $m("GameManager", function () { return {"nested":[GameManager.GameState],"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"AddScore","t":8,"pi":[{"n":"amount","pt":$n[0].Int32,"ps":0}],"sn":"AddScore","rt":$n[0].Void,"p":[$n[0].Int32]},{"a":1,"n":"Awake","t":8,"sn":"Awake","rt":$n[0].Void},{"a":2,"n":"Bid","t":8,"sn":"Bid","rt":$n[0].Void},{"a":2,"n":"CTAClicked","t":8,"sn":"CTAClicked","rt":$n[0].Void},{"a":2,"n":"ChangeState","t":8,"pi":[{"n":"newState","pt":GameManager.GameState,"ps":0}],"sn":"ChangeState","rt":$n[0].Void,"p":[GameManager.GameState]},{"a":1,"n":"DestroyHandObj","t":8,"sn":"DestroyHandObj","rt":$n[0].Void},{"a":2,"n":"FailBid","t":8,"sn":"FailBid","rt":$n[3].IEnumerator},{"a":2,"n":"FailPass","t":8,"sn":"FailPass","rt":$n[3].IEnumerator},{"a":2,"n":"ItemsMove","t":8,"pi":[{"n":"pos","pt":$n[0].Int32,"ps":0}],"sn":"ItemsMove","rt":$n[3].IEnumerator,"p":[$n[0].Int32]},{"a":2,"n":"Pass","t":8,"sn":"Pass","rt":$n[0].Void},{"a":2,"n":"ResetScore","t":8,"sn":"ResetScore","rt":$n[0].Void},{"a":2,"n":"RestartGame","t":8,"sn":"RestartGame","rt":$n[0].Void},{"a":1,"n":"SetLevel","t":8,"pi":[{"n":"lvl","pt":$n[0].Int32,"ps":0}],"sn":"SetLevel","rt":$n[0].Void,"p":[$n[0].Int32]},{"a":2,"n":"ShowFake","t":8,"sn":"ShowFake","rt":$n[0].Void},{"a":1,"n":"Start","t":8,"sn":"Start","rt":$n[0].Void},{"a":2,"n":"StartBidding","t":8,"sn":"StartBidding","rt":$n[3].IEnumerator},{"a":2,"n":"StartMusic","t":8,"sn":"StartMusic","rt":$n[0].Void},{"a":2,"n":"Win","t":8,"sn":"Win","rt":$n[3].IEnumerator},{"a":2,"n":"CurrentScore","t":16,"rt":$n[0].Int32,"g":{"a":2,"n":"get_CurrentScore","t":8,"rt":$n[0].Int32,"fg":"CurrentScore","box":function ($v) { return Bridge.box($v, System.Int32);}},"s":{"a":2,"n":"set_CurrentScore","t":8,"p":[$n[0].Int32],"rt":$n[0].Void,"fs":"CurrentScore"},"fn":"CurrentScore"},{"a":2,"n":"CurrentState","t":16,"rt":GameManager.GameState,"g":{"a":2,"n":"get_CurrentState","t":8,"rt":GameManager.GameState,"fg":"CurrentState","box":function ($v) { return Bridge.box($v, GameManager.GameState, System.Enum.toStringFn(GameManager.GameState));}},"s":{"a":1,"n":"set_CurrentState","t":8,"p":[GameManager.GameState],"rt":$n[0].Void,"fs":"CurrentState"},"fn":"CurrentState"},{"a":2,"n":"AuthenticImg","t":4,"rt":$n[2].GameObject,"sn":"AuthenticImg"},{"a":2,"n":"Instance","is":true,"t":4,"rt":GameManager,"sn":"Instance"},{"a":2,"n":"animPos","t":4,"rt":$n[0].Array.type(System.Int32),"sn":"animPos"},{"a":2,"n":"animator","t":4,"rt":$n[2].Animator,"sn":"animator"},{"a":2,"n":"bidFail","t":4,"rt":$n[0].Boolean,"sn":"bidFail","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"biddersBubble","t":4,"rt":System.Array.type(UnityEngine.GameObject),"sn":"biddersBubble"},{"a":2,"n":"biddersLossPlus","t":4,"rt":$n[2].GameObject,"sn":"biddersLossPlus"},{"a":2,"n":"biddersLossTxt","t":4,"rt":$n[2].GameObject,"sn":"biddersLossTxt"},{"a":2,"n":"btnGroup","t":4,"rt":$n[2].GameObject,"sn":"btnGroup"},{"a":2,"n":"cashTxt","t":4,"rt":$n[6].TMP_Text,"sn":"cashTxt"},{"a":2,"n":"currentScore","t":4,"rt":$n[0].Int32,"sn":"currentScore","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"enableSound","t":4,"rt":$n[0].Boolean,"sn":"enableSound","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"end","t":4,"rt":$n[0].Boolean,"sn":"end","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"endPanel","t":4,"rt":$n[2].GameObject,"sn":"endPanel"},{"a":2,"n":"endPanelAnimator","t":4,"rt":CanvasGroupAnimator,"sn":"endPanelAnimator"},{"a":2,"n":"endPlay","t":4,"rt":$n[0].Boolean,"sn":"endPlay","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"fail","t":4,"rt":$n[0].Boolean,"sn":"fail","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"failBidCanvas","t":4,"rt":CanvasGroupAnimator,"sn":"failBidCanvas"},{"a":2,"n":"failPassCanvas","t":4,"rt":CanvasGroupAnimator,"sn":"failPassCanvas"},{"a":2,"n":"fakeImg","t":4,"rt":$n[2].GameObject,"sn":"fakeImg"},{"a":2,"n":"hand","t":4,"rt":$n[2].GameObject,"sn":"hand"},{"a":2,"n":"itemValue","t":4,"rt":$n[0].Int32,"sn":"itemValue","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"items","t":4,"rt":$n[1].List$1(DataObject),"sn":"items"},{"a":2,"n":"itemsParent","t":4,"rt":$n[2].RectTransform,"sn":"itemsParent"},{"a":2,"n":"level","t":4,"rt":$n[0].Int32,"sn":"level","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"message2","t":4,"rt":$n[2].GameObject,"sn":"message2"},{"a":2,"n":"passFail","t":4,"rt":$n[0].Boolean,"sn":"passFail","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"playersLoss","t":4,"rt":$n[2].GameObject,"sn":"playersLoss"},{"a":2,"n":"playersPlus","t":4,"rt":$n[2].GameObject,"sn":"playersPlus"},{"a":2,"n":"profitImg","t":4,"rt":$n[2].GameObject,"sn":"profitImg"},{"a":2,"n":"scoreTxt","t":4,"rt":$n[6].TMP_Text,"sn":"scoreTxt"},{"a":2,"n":"startClickHandler","t":4,"rt":StartClickHandler,"sn":"startClickHandler"},{"a":2,"n":"win","t":4,"rt":$n[0].Boolean,"sn":"win","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"backing":true,"n":"<CurrentState>k__BackingField","t":4,"rt":GameManager.GameState,"sn":"CurrentState","box":function ($v) { return Bridge.box($v, GameManager.GameState, System.Enum.toStringFn(GameManager.GameState));}}]}; }, $n);
+    $m("GameManager", function () { return {"nested":[GameManager.GameState],"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"AddScore","t":8,"pi":[{"n":"amount","pt":$n[0].Int32,"ps":0}],"sn":"AddScore","rt":$n[0].Void,"p":[$n[0].Int32]},{"a":1,"n":"Awake","t":8,"sn":"Awake","rt":$n[0].Void},{"a":2,"n":"Bid","t":8,"sn":"Bid","rt":$n[0].Void},{"a":2,"n":"CTAClicked","t":8,"sn":"CTAClicked","rt":$n[0].Void},{"a":2,"n":"ChangeState","t":8,"pi":[{"n":"newState","pt":GameManager.GameState,"ps":0}],"sn":"ChangeState","rt":$n[0].Void,"p":[GameManager.GameState]},{"a":1,"n":"DestroyHandObj","t":8,"sn":"DestroyHandObj","rt":$n[0].Void},{"a":2,"n":"FailBid","t":8,"sn":"FailBid","rt":$n[3].IEnumerator},{"a":2,"n":"FailPass","t":8,"sn":"FailPass","rt":$n[3].IEnumerator},{"a":2,"n":"ItemsMove","t":8,"pi":[{"n":"pos","pt":$n[0].Int32,"ps":0}],"sn":"ItemsMove","rt":$n[3].IEnumerator,"p":[$n[0].Int32]},{"a":2,"n":"Pass","t":8,"sn":"Pass","rt":$n[0].Void},{"a":2,"n":"ResetScore","t":8,"sn":"ResetScore","rt":$n[0].Void},{"a":2,"n":"RestartGame","t":8,"sn":"RestartGame","rt":$n[0].Void},{"a":1,"n":"SetLevel","t":8,"pi":[{"n":"lvl","pt":$n[0].Int32,"ps":0}],"sn":"SetLevel","rt":$n[0].Void,"p":[$n[0].Int32]},{"a":2,"n":"ShowFake","t":8,"sn":"ShowFake","rt":$n[0].Void},{"a":1,"n":"Start","t":8,"sn":"Start","rt":$n[0].Void},{"a":2,"n":"StartBidding","t":8,"sn":"StartBidding","rt":$n[3].IEnumerator},{"a":2,"n":"StartMusic","t":8,"sn":"StartMusic","rt":$n[0].Void},{"a":2,"n":"Win","t":8,"sn":"Win","rt":$n[3].IEnumerator},{"a":2,"n":"CurrentScore","t":16,"rt":$n[0].Int32,"g":{"a":2,"n":"get_CurrentScore","t":8,"rt":$n[0].Int32,"fg":"CurrentScore","box":function ($v) { return Bridge.box($v, System.Int32);}},"s":{"a":2,"n":"set_CurrentScore","t":8,"p":[$n[0].Int32],"rt":$n[0].Void,"fs":"CurrentScore"},"fn":"CurrentScore"},{"a":2,"n":"CurrentState","t":16,"rt":GameManager.GameState,"g":{"a":2,"n":"get_CurrentState","t":8,"rt":GameManager.GameState,"fg":"CurrentState","box":function ($v) { return Bridge.box($v, GameManager.GameState, System.Enum.toStringFn(GameManager.GameState));}},"s":{"a":1,"n":"set_CurrentState","t":8,"p":[GameManager.GameState],"rt":$n[0].Void,"fs":"CurrentState"},"fn":"CurrentState"},{"a":2,"n":"AuthenticImg","t":4,"rt":$n[2].GameObject,"sn":"AuthenticImg"},{"a":2,"n":"Instance","is":true,"t":4,"rt":GameManager,"sn":"Instance"},{"a":2,"n":"animPos","t":4,"rt":$n[0].Array.type(System.Int32),"sn":"animPos"},{"a":2,"n":"animator","t":4,"rt":$n[2].Animator,"sn":"animator"},{"a":2,"n":"bidFail","t":4,"rt":$n[0].Boolean,"sn":"bidFail","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"biddersBubble","t":4,"rt":System.Array.type(UnityEngine.GameObject),"sn":"biddersBubble"},{"a":2,"n":"biddersLossPlus","t":4,"rt":$n[2].GameObject,"sn":"biddersLossPlus"},{"a":2,"n":"biddersLossTxt","t":4,"rt":$n[2].GameObject,"sn":"biddersLossTxt"},{"a":2,"n":"btnGroup","t":4,"rt":$n[2].GameObject,"sn":"btnGroup"},{"a":2,"n":"cashTxt","t":4,"rt":$n[6].TMP_Text,"sn":"cashTxt"},{"a":2,"n":"conditionMet","t":4,"rt":$n[0].Boolean,"sn":"conditionMet","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"currentScore","t":4,"rt":$n[0].Int32,"sn":"currentScore","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"enableSound","t":4,"rt":$n[0].Boolean,"sn":"enableSound","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"end","t":4,"rt":$n[0].Boolean,"sn":"end","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"endPanel","t":4,"rt":$n[2].GameObject,"sn":"endPanel"},{"a":2,"n":"endPanelAnimator","t":4,"rt":CanvasGroupAnimator,"sn":"endPanelAnimator"},{"a":2,"n":"endPlay","t":4,"rt":$n[0].Boolean,"sn":"endPlay","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"fail","t":4,"rt":$n[0].Boolean,"sn":"fail","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"failBidCanvas","t":4,"rt":CanvasGroupAnimator,"sn":"failBidCanvas"},{"a":2,"n":"failPassCanvas","t":4,"rt":CanvasGroupAnimator,"sn":"failPassCanvas"},{"a":2,"n":"fakeImg","t":4,"rt":$n[2].GameObject,"sn":"fakeImg"},{"a":2,"n":"hand","t":4,"rt":$n[2].GameObject,"sn":"hand"},{"a":2,"n":"itemValue","t":4,"rt":$n[0].Int32,"sn":"itemValue","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"items","t":4,"rt":$n[1].List$1(DataObject),"sn":"items"},{"a":2,"n":"itemsParent","t":4,"rt":$n[2].RectTransform,"sn":"itemsParent"},{"a":2,"n":"level","t":4,"rt":$n[0].Int32,"sn":"level","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"levelImageSwitcher","t":4,"rt":LevelImageSwitcher,"sn":"levelImageSwitcher"},{"a":2,"n":"message2","t":4,"rt":$n[2].GameObject,"sn":"message2"},{"a":2,"n":"passFail","t":4,"rt":$n[0].Boolean,"sn":"passFail","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"playersLoss","t":4,"rt":$n[2].GameObject,"sn":"playersLoss"},{"a":2,"n":"playersPlus","t":4,"rt":$n[2].GameObject,"sn":"playersPlus"},{"a":2,"n":"profitImg","t":4,"rt":$n[2].GameObject,"sn":"profitImg"},{"a":2,"n":"promptBubble","t":4,"rt":$n[2].GameObject,"sn":"promptBubble"},{"a":2,"n":"scoreTxt","t":4,"rt":$n[6].TMP_Text,"sn":"scoreTxt"},{"a":2,"n":"startClickHandler","t":4,"rt":StartClickHandler,"sn":"startClickHandler"},{"a":2,"n":"win","t":4,"rt":$n[0].Boolean,"sn":"win","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"backing":true,"n":"<CurrentState>k__BackingField","t":4,"rt":GameManager.GameState,"sn":"CurrentState","box":function ($v) { return Bridge.box($v, GameManager.GameState, System.Enum.toStringFn(GameManager.GameState));}}]}; }, $n);
     /*GameManager end.*/
 
     /*GameManager+GameState start.*/
     $m("GameManager.GameState", function () { return {"td":GameManager,"att":258,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"GameOver","is":true,"t":4,"rt":GameManager.GameState,"sn":"GameOver","box":function ($v) { return Bridge.box($v, GameManager.GameState, System.Enum.toStringFn(GameManager.GameState));}},{"a":2,"n":"MainMenu","is":true,"t":4,"rt":GameManager.GameState,"sn":"MainMenu","box":function ($v) { return Bridge.box($v, GameManager.GameState, System.Enum.toStringFn(GameManager.GameState));}},{"a":2,"n":"Paused","is":true,"t":4,"rt":GameManager.GameState,"sn":"Paused","box":function ($v) { return Bridge.box($v, GameManager.GameState, System.Enum.toStringFn(GameManager.GameState));}},{"a":2,"n":"Playing","is":true,"t":4,"rt":GameManager.GameState,"sn":"Playing","box":function ($v) { return Bridge.box($v, GameManager.GameState, System.Enum.toStringFn(GameManager.GameState));}}]}; }, $n);
     /*GameManager+GameState end.*/
 
+    /*LevelImageSwitcher start.*/
+    $m("LevelImageSwitcher", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"ChangeImage","t":8,"pi":[{"n":"newIndex","pt":$n[0].Int32,"ps":0}],"sn":"ChangeImage","rt":$n[0].Void,"p":[$n[0].Int32]},{"a":1,"n":"Start","t":8,"sn":"Start","rt":$n[0].Void},{"a":2,"n":"LevelImageCount","t":16,"rt":$n[0].Int32,"g":{"a":2,"n":"get_LevelImageCount","t":8,"rt":$n[0].Int32,"fg":"LevelImageCount","box":function ($v) { return Bridge.box($v, System.Int32);}},"fn":"LevelImageCount"},{"a":1,"n":"currentIndex","t":4,"rt":$n[0].Int32,"sn":"currentIndex","box":function ($v) { return Bridge.box($v, System.Int32);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"levelImages","t":4,"rt":System.Array.type(UnityEngine.GameObject),"sn":"levelImages"}]}; }, $n);
+    /*LevelImageSwitcher end.*/
+
     /*PromtPopUp start.*/
     $m("PromtPopUp", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"Start","t":8,"sn":"Start","rt":$n[0].Void},{"a":2,"n":"showFake","t":8,"sn":"showFake","rt":$n[0].Void},{"a":2,"n":"DestroyGameObject","t":4,"rt":$n[0].Boolean,"sn":"DestroyGameObject","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"fake","t":4,"rt":$n[0].Boolean,"sn":"fake","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}}]}; }, $n);
     /*PromtPopUp end.*/
+
+    /*SetConditionMet start.*/
+    $m("SetConditionMet", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"SetConditon","t":8,"sn":"SetConditon","rt":$n[0].Void},{"a":1,"n":"Start","t":8,"sn":"Start","rt":$n[0].Void},{"a":1,"n":"Update","t":8,"sn":"Update","rt":$n[0].Void}]}; }, $n);
+    /*SetConditionMet end.*/
 
     /*StartClickHandler start.*/
     $m("StartClickHandler", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"EnableSound","t":8,"sn":"EnableSound","rt":$n[0].Void},{"a":2,"n":"OnPointerDown","t":8,"pi":[{"n":"eventData","pt":$n[7].PointerEventData,"ps":0}],"sn":"OnPointerDown","rt":$n[0].Void,"p":[$n[7].PointerEventData]}]}; }, $n);

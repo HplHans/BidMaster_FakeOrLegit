@@ -1,83 +1,85 @@
 {
   "ignores": [
-    "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleAudio.cs",
-    "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModulePhysics.cs",
-    "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModulePhysics2D.cs",
-    "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleSprite.cs",
-    "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUI.cs",
-    "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUnityVersion.cs"
+    "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleAudio.cs",
+    "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModulePhysics.cs",
+    "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModulePhysics2D.cs",
+    "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleSprite.cs",
+    "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUI.cs",
+    "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUnityVersion.cs"
   ],
   "groups": [
     [
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleAudio.cs"
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleAudio.cs"
     ],
     [
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleEPOOutline.cs"
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleEPOOutline.cs"
     ],
     [
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModulePhysics.cs"
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModulePhysics.cs"
     ],
     [
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModulePhysics2D.cs"
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModulePhysics2D.cs"
     ],
     [
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleSprite.cs"
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleSprite.cs"
     ],
     [
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUI.cs"
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUI.cs"
     ],
     [
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUnityVersion.cs"
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUnityVersion.cs"
     ],
     [
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUtils.cs"
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUtils.cs"
     ],
     [
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/AudioManager/Scripts/AudioChannel.cs",
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/AudioManager/Scripts/AudioLibrary.cs",
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/AudioManager/Scripts/AudioManager.cs",
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/GameManager.cs",
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/StartClickHandler.cs",
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/StartTimer.cs",
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/CanvasGroupAnimator.cs",
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/DataManager/DataObject.cs",
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/DataManager/DataEntry.cs",
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/DataManager/DataManager.cs",
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/TaskManager/TaskSequencePro.cs",
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/TaskManager/TaskManager.cs",
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/TaskManager/TaskSequencePool.cs",
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/PromtPopUp.cs",
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/FloatingTextEffect.cs",
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/AudioManager/Scripts/Core/Services/IAudioService.cs",
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/AudioManager/Scripts/Core/Services/ServicesLocator.cs"
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/AudioManager/Scripts/AudioChannel.cs",
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/AudioManager/Scripts/AudioLibrary.cs",
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/AudioManager/Scripts/AudioManager.cs",
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/GameManager.cs",
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/SetConditionMet.cs",
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/StartClickHandler.cs",
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/StartTimer.cs",
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/CanvasGroupAnimator.cs",
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/LevelImageSwitcher.cs",
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/DataManager/DataObject.cs",
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/DataManager/DataEntry.cs",
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/DataManager/DataManager.cs",
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/TaskManager/TaskSequencePro.cs",
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/TaskManager/TaskManager.cs",
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/TaskManager/TaskSequencePool.cs",
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/PromtPopUp.cs",
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/FloatingTextEffect.cs",
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/AudioManager/Scripts/Core/Services/IAudioService.cs",
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/AudioManager/Scripts/Core/Services/ServicesLocator.cs"
     ],
     [
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/AudioManager/Scripts/Core/Events/EventAggregator.cs",
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/AudioManager/Scripts/Core/Events/GameEvent.cs"
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/AudioManager/Scripts/Core/Events/EventAggregator.cs",
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/AudioManager/Scripts/Core/Events/GameEvent.cs"
     ],
     [
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/AudioManager/Scripts/Core/Services/IUIManager.cs"
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/AudioManager/Scripts/Core/Services/IUIManager.cs"
     ],
     [
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/ButtonPulse.cs"
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/ButtonPulse.cs"
     ],
     [
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/CameraAspectFitter.cs"
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/CameraAspectFitter.cs"
     ],
     [
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/ObjectPoolingManager/Bullet.cs",
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/ObjectPoolingManager/IPooledObject.cs",
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/ObjectPoolingManager/ObjectPoolManager.cs",
-      "D:/UnityProjects/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/ObjectPoolingManager/Spawner.cs"
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/ObjectPoolingManager/Bullet.cs",
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/ObjectPoolingManager/IPooledObject.cs",
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/ObjectPoolingManager/ObjectPoolManager.cs",
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/LunaTemp/stage3/processed-scripts/Assets/Scripts/ObjectPoolingManager/Spawner.cs"
     ],
     [
-      "D:/UnityProjects/BidMaster_FakeOrLegit/Playworks/pipeline/templates/LunaCompiler/Scripts/Properties/AssemblyInfo.cs"
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/Playworks/pipeline/templates/LunaCompiler/Scripts/Properties/AssemblyInfo.cs"
     ],
     [
-      "D:/UnityProjects/BidMaster_FakeOrLegit/Playworks/pipeline/templates/LunaCompiler/Scripts/Sources/OtherDummyScript.cs"
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/Playworks/pipeline/templates/LunaCompiler/Scripts/Sources/OtherDummyScript.cs"
     ],
     [
-      "D:/UnityProjects/BidMaster_FakeOrLegit/Playworks/pipeline/templates/LunaCompiler/Scripts/obj/Debug/.NETFramework,Version=v4.7.AssemblyAttributes.cs"
+      "C:/Users/L.Hans Francis/Documents/GitHub/BidMasterFakeOrLegit/BidMaster_FakeOrLegit/Playworks/pipeline/templates/LunaCompiler/Scripts/obj/Debug/.NETFramework,Version=v4.7.AssemblyAttributes.cs"
     ]
   ]
 }

@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public GameObject endPanel;
     public CanvasGroupAnimator endPanelAnimator;
+    public LevelImageSwitcher levelImageSwitcher;
     public TMP_Text scoreTxt;
     public bool end;
     public bool endPlay;
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
     public bool bidFail;
     public bool passFail;
     public bool conditionMet;
+    
     public enum GameState { MainMenu, Playing, Paused, GameOver }
     public GameState CurrentState { get; private set; }
     public int currentScore;
@@ -68,6 +70,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         level = 1;
+        SetLevel(1);
         ChangeState(GameState.MainMenu);
         items = DataManager.Instance.GetList("Items");
         var seq = TaskManager.Instance.CreateSequence();
@@ -258,6 +261,14 @@ public class GameManager : MonoBehaviour
     void SetLevel(int lvl)
     {
         StartCoroutine(ItemsMove(lvl - 1));
+        level = lvl;
+
+        // Make sure glow updates immediately
+        if (levelImageSwitcher != null && lvl > 0 && lvl <= levelImageSwitcher.LevelImageCount)
+        {
+            levelImageSwitcher.ChangeImage(lvl - 1);
+        }
+
         switch (lvl)
         {
             case 1:
@@ -319,6 +330,7 @@ public class GameManager : MonoBehaviour
             }
         }
         level++;
+        conditionMet = false;
     }
     public void Pass()
     {
@@ -360,5 +372,6 @@ public class GameManager : MonoBehaviour
             }     
         }
         level++;
+        conditionMet = false;
     }
 }

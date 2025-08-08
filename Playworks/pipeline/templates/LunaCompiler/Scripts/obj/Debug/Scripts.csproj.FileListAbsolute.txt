@@ -26,3 +26,31 @@ D:\UnityProjects\BidMaster_FakeOrLegit\Playworks\pipeline\templates\LunaCompiler
 D:\UnityProjects\BidMaster_FakeOrLegit\Playworks\pipeline\templates\LunaCompiler\Scripts\obj\Debug\Scripts.csproj.Up2Date
 D:\UnityProjects\BidMaster_FakeOrLegit\Playworks\pipeline\templates\LunaCompiler\Scripts\obj\Debug\UnityScriptsCompiler.dll
 D:\UnityProjects\BidMaster_FakeOrLegit\Playworks\pipeline\templates\LunaCompiler\Scripts\obj\Debug\UnityScriptsCompiler.pdb
+C:\Users\L.Hans Francis\Documents\GitHub\BidMasterFakeOrLegit\BidMaster_FakeOrLegit\Playworks\pipeline\templates\LunaCompiler\Scripts\bin\Debug\UnityScriptsCompiler.dll
+C:\Users\L.Hans Francis\Documents\GitHub\BidMasterFakeOrLegit\BidMaster_FakeOrLegit\Playworks\pipeline\templates\LunaCompiler\Scripts\bin\Debug\UnityScriptsCompiler.pdb
+C:\Users\L.Hans Francis\Documents\GitHub\BidMasterFakeOrLegit\BidMaster_FakeOrLegit\Playworks\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.dll
+C:\Users\L.Hans Francis\Documents\GitHub\BidMasterFakeOrLegit\BidMaster_FakeOrLegit\Playworks\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.Html5.dll
+C:\Users\L.Hans Francis\Documents\GitHub\BidMasterFakeOrLegit\BidMaster_FakeOrLegit\Playworks\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.WebGL.dll
+C:\Users\L.Hans Francis\Documents\GitHub\BidMasterFakeOrLegit\BidMaster_FakeOrLegit\Playworks\pipeline\templates\LunaCompiler\Scripts\bin\Debug\DOTween.dll
+C:\Users\L.Hans Francis\Documents\GitHub\BidMasterFakeOrLegit\BidMaster_FakeOrLegit\Playworks\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Newtonsoft.Json.dll
+C:\Users\L.Hans Francis\Documents\GitHub\BidMasterFakeOrLegit\BidMaster_FakeOrLegit\Playworks\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.Core.dll
+C:\Users\L.Hans Francis\Documents\GitHub\BidMasterFakeOrLegit\BidMaster_FakeOrLegit\Playworks\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.dom.dll
+C:\Users\L.Hans Francis\Documents\GitHub\BidMasterFakeOrLegit\BidMaster_FakeOrLegit\Playworks\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.es5.dll
+C:\Users\L.Hans Francis\Documents\GitHub\BidMasterFakeOrLegit\BidMaster_FakeOrLegit\Playworks\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.scripthost.dll
+C:\Users\L.Hans Francis\Documents\GitHub\BidMasterFakeOrLegit\BidMaster_FakeOrLegit\Playworks\pipeline\templates\LunaCompiler\Scripts\bin\Debug\TextMeshPro.dll
+C:\Users\L.Hans Francis\Documents\GitHub\BidMasterFakeOrLegit\BidMaster_FakeOrLegit\Playworks\pipeline\templates\LunaCompiler\Scripts\bin\Debug\UnityEngine.dll
+C:\Users\L.Hans Francis\Documents\GitHub\BidMasterFakeOrLegit\BidMaster_FakeOrLegit\Playworks\pipeline\templates\LunaCompiler\Scripts\bin\Debug\UnityEngine.UI.dll
+C:\Users\L.Hans Francis\Documents\GitHub\BidMasterFakeOrLegit\BidMaster_FakeOrLegit\Playworks\pipeline\templates\LunaCompiler\Scripts\bin\Debug\UnityEngine.UniversalRenderPipeline.dll
+C:\Users\L.Hans Francis\Documents\GitHub\BidMasterFakeOrLegit\BidMaster_FakeOrLegit\Playworks\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.xml
+C:\Users\L.Hans Francis\Documents\GitHub\BidMasterFakeOrLegit\BidMaster_FakeOrLegit\Playworks\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.Html5.xml
+C:\Users\L.Hans Francis\Documents\GitHub\BidMasterFakeOrLegit\BidMaster_FakeOrLegit\Playworks\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.WebGL.xml
+C:\Users\L.Hans Francis\Documents\GitHub\BidMasterFakeOrLegit\BidMaster_FakeOrLegit\Playworks\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Newtonsoft.Json.xml
+C:\Users\L.Hans Francis\Documents\GitHub\BidMasterFakeOrLegit\BidMaster_FakeOrLegit\Playworks\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.Core.xml
+C:\Users\L.Hans Francis\Documents\GitHub\BidMasterFakeOrLegit\BidMaster_FakeOrLegit\Playworks\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.dom.xml
+C:\Users\L.Hans Francis\Documents\GitHub\BidMasterFakeOrLegit\BidMaster_FakeOrLegit\Playworks\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.es5.xml
+C:\Users\L.Hans Francis\Documents\GitHub\BidMasterFakeOrLegit\BidMaster_FakeOrLegit\Playworks\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.scripthost.xml
+C:\Users\L.Hans Francis\Documents\GitHub\BidMasterFakeOrLegit\BidMaster_FakeOrLegit\Playworks\pipeline\templates\LunaCompiler\Scripts\obj\Debug\Scripts.csproj.AssemblyReference.cache
+C:\Users\L.Hans Francis\Documents\GitHub\BidMasterFakeOrLegit\BidMaster_FakeOrLegit\Playworks\pipeline\templates\LunaCompiler\Scripts\obj\Debug\Scripts.csproj.CoreCompileInputs.cache
+C:\Users\L.Hans Francis\Documents\GitHub\BidMasterFakeOrLegit\BidMaster_FakeOrLegit\Playworks\pipeline\templates\LunaCompiler\Scripts\obj\Debug\Scripts.csproj.Up2Date
+C:\Users\L.Hans Francis\Documents\GitHub\BidMasterFakeOrLegit\BidMaster_FakeOrLegit\Playworks\pipeline\templates\LunaCompiler\Scripts\obj\Debug\UnityScriptsCompiler.dll
+C:\Users\L.Hans Francis\Documents\GitHub\BidMasterFakeOrLegit\BidMaster_FakeOrLegit\Playworks\pipeline\templates\LunaCompiler\Scripts\obj\Debug\UnityScriptsCompiler.pdb
