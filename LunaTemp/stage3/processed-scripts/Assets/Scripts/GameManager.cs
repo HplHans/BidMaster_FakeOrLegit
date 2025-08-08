@@ -5,9 +5,11 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private bool SIP = false; // Enable for SIP
     public static GameManager Instance;
     public GameObject endPanel;
     public CanvasGroupAnimator endPanelAnimator;
@@ -43,7 +45,9 @@ public class GameManager : MonoBehaviour
     public bool bidFail;
     public bool passFail;
     public bool conditionMet;
-    
+    private int previousLevel = 0;
+    [SerializeField] private List<GameObject> auctionItems;
+
     public enum GameState { MainMenu, Playing, Paused, GameOver }
     public GameState CurrentState { get; private set; }
     public int currentScore;
@@ -71,6 +75,15 @@ public class GameManager : MonoBehaviour
     {
         level = 1;
         SetLevel(1);
+
+        // Ensure first auction item is white at start
+        if (auctionItems != null && auctionItems.Count > 0)
+        {
+            var firstImg = auctionItems[0].GetComponent<Image>();
+            if (firstImg != null)
+                firstImg.color = Color.white;
+        }
+
         ChangeState(GameState.MainMenu);
         items = DataManager.Instance.GetList("Items");
         var seq = TaskManager.Instance.CreateSequence();
@@ -211,6 +224,8 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator StartBidding()
     {
+
+        //Normal Flow
         for (int i = 0; i < biddersBubble.Length; i++)
         {
             AudioManager.Instance.PlaySFX("OnBid");
@@ -240,9 +255,24 @@ public class GameManager : MonoBehaviour
                 Debug.Log("3");
                 if (!conditionMet)
                 {
-                    promptBubble.gameObject.SetActive(true);
+                    promptBubble.SetActive(true);
+
+                    if (SIP)
+                    {
+                        var button = promptBubble.GetComponent<UnityEngine.UI.Button>();
+                        if (button != null)
+                        {
+                            button.onClick.RemoveAllListeners();
+                            button.onClick.AddListener(() =>
+                            {
+                                conditionMet = true;
+                                HandlePromptBubbleTap();
+                            });
+                        }
+                    }
+
                     yield return new WaitUntil(() => conditionMet);
-                    promptBubble.gameObject.SetActive(false);
+                    promptBubble.SetActive(false);
                 }
                 biddersBubble[3].gameObject.SetActive(true);
                 biddersBubble[3].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = items[level - 1].playerBid;
@@ -263,11 +293,12 @@ public class GameManager : MonoBehaviour
         StartCoroutine(ItemsMove(lvl - 1));
         level = lvl;
 
-        // Make sure glow updates immediately
-        if (levelImageSwitcher != null && lvl > 0 && lvl <= levelImageSwitcher.LevelImageCount)
-        {
-            levelImageSwitcher.ChangeImage(lvl - 1);
-        }
+        // Switch glow + brighten item via LevelImageSwitcher
+        if (levelImageSwitcher != null)
+            levelImageSwitcher.ChangeImage(level - 1);
+
+        // Update the tracker
+        previousLevel = lvl;
 
         switch (lvl)
         {
@@ -374,4 +405,25 @@ public class GameManager : MonoBehaviour
         level++;
         conditionMet = false;
     }
+    private void HandlePromptBubbleTap()
+    {
+        promptBubble.SetActive(false);
+
+        if (endPanel != null && endPanelAnimator != null)
+        {
+            endPanel.SetActive(true);
+            endPanelAnimator.TriggerAnimate();
+        }
+
+        StopAllCoroutines();
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.enableSound = false;
+            AudioManager.Instance.StopMusic();
+        }
+
+        ChangeState(GameState.Paused);
+    }
+
 }

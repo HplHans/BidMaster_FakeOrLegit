@@ -4235,6 +4235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f41f663f57abc774a993876d6fd0d828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SIP: 1
   endPanel: {fileID: 1392865606}
   endPanelAnimator: {fileID: 1392865612}
   levelImageSwitcher: {fileID: 1308308857}
@@ -4276,6 +4277,10 @@ MonoBehaviour:
   bidFail: 0
   passFail: 0
   conditionMet: 0
+  auctionItems:
+  - {fileID: 266876880}
+  - {fileID: 426003755}
+  - {fileID: 1093817796}
   currentScore: 0
 --- !u!4 &1308308856
 Transform:
@@ -4308,6 +4313,10 @@ MonoBehaviour:
   - {fileID: 1849976901}
   - {fileID: 268132310}
   - {fileID: 1594797663}
+  itemImages:
+  - {fileID: 266876882}
+  - {fileID: 426003757}
+  - {fileID: 1093817798}
 --- !u!1 &1309849326
 GameObject:
   m_ObjectHideFlags: 0

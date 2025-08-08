@@ -14955,7 +14955,7 @@
                     },
                     {
                         "name": "RemoveAllListeners",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "GetPersistentTarget",
@@ -18905,7 +18905,7 @@
                     },
                     {
                         "name": "color#set",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "ctor",
@@ -21945,7 +21945,7 @@
                     },
                     {
                         "name": "AddListener",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "RemoveListener",
@@ -25269,7 +25269,7 @@
                 "instanceMethods": [
                     {
                         "name": "onClick#get",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "onClick#set",
@@ -31759,6 +31759,14 @@
                     },
                     {
                         "name": "ShowFake",
+                        "excluded": false
+                    },
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "HandlePromptBubbleTap",
                         "excluded": false
                     }
                 ]

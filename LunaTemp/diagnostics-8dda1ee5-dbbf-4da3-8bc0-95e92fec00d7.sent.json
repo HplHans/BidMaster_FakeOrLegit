@@ -1,0 +1,220 @@
+{
+    "BuildID": "8dda1ee5-dbbf-4da3-8bc0-95e92fec00d7",
+    "Command": "project:build",
+    "ProjectID": "fb3dab522ff319d4ca458a16fd743c6d",
+    "ProjectStateHash": "d4fab09e2638ee106d15d7bcb93218d7243401e3d3abe62fd878704f0345ba94",
+    "StageCompletedAt": 3,
+    "EarliestFatalError": 0,
+    "StartTime": 1754646763666,
+    "EndTime": 1754646811147,
+    "PlaygroundUserID": 26361,
+    "OperatingSystem": "win32",
+    "UnityPackageID": null,
+    "TargetPlatform": "develop",
+    "UnityVersion": "2022.3.61f1\r",
+    "LunaVersion": "6.3.0",
+    "LogCount": 8,
+    "Logs": [
+        {
+            "LogID": "12e64a32-3743-4bdb-892b-b763dc67f66f",
+            "Order": 5,
+            "Timestamp": 1754646811445,
+            "Stage": 3,
+            "ErrorType": 0,
+            "ErrorCode": "LP3005",
+            "Description": "You are using a Luna reserved keyword: Tag",
+            "Details": [
+                "You are using a reserved keyword: Tag for Luna. Please change the name of the field/class"
+            ],
+            "DescriptionValues": [
+                "Tag"
+            ],
+            "DetailsValues": [
+                "Tag"
+            ],
+            "LogCount": 1,
+            "LinePosition": 13,
+            "FilePath": "C:\\Users\\L.Hans Francis\\Documents\\GitHub\\BidMasterFakeOrLegit\\BidMaster_FakeOrLegit\\Assets\\Scripts\\ObjectPoolingManager\\ObjectPoolManager.cs",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 0
+        },
+        {
+            "LogID": "93d757ce-bea4-4489-950a-22609327ba6c",
+            "Order": 5,
+            "Timestamp": 1754646811480,
+            "Stage": 3,
+            "ErrorType": 1,
+            "ErrorCode": "LP3015",
+            "Description": "You are not the Game Ended API: LifeCycle.GameEnded",
+            "Details": [
+                "You are not using the Game Ended API: LifeCycle.GameEnded. Some ad networks require this call, please add the event to avoid the ad being rejected."
+            ],
+            "DescriptionValues": [
+                "LifeCycle",
+                "GameEnded"
+            ],
+            "DetailsValues": [
+                "LifeCycle",
+                "GameEnded"
+            ],
+            "LogCount": 1,
+            "LinePosition": null,
+            "FilePath": "",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 0
+        },
+        {
+            "LogID": "b2217ee6-88c6-42d3-b4b3-7b48dcf3b7ad",
+            "Order": 5,
+            "Timestamp": 1754646811481,
+            "Stage": 3,
+            "ErrorType": 3,
+            "ErrorCode": "LP3007",
+            "Description": "You are not using any custom events",
+            "Details": [
+                "You are not using any custom events. It is recommended to use custom events to have a better understanding of the playable."
+            ],
+            "DescriptionValues": [
+                ""
+            ],
+            "DetailsValues": [
+                ""
+            ],
+            "LogCount": 1,
+            "LinePosition": null,
+            "FilePath": "",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 0
+        },
+        {
+            "LogID": "cce177b7-484e-4361-a025-f8318c69b7b6",
+            "Order": 5,
+            "Timestamp": 1754646811481,
+            "Stage": 3,
+            "ErrorType": 3,
+            "ErrorCode": "LP3011",
+            "Description": "You are not using any LunaPlaygroundFields attributes.",
+            "Details": [
+                "You are not using any LunaPlaygroundFields attributes, it allows you to configure your playable to different concepts to find the best variation, which can drastically improve playable performance on all ad networks."
+            ],
+            "DescriptionValues": null,
+            "DetailsValues": null,
+            "LogCount": 1,
+            "LinePosition": null,
+            "FilePath": "",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 0
+        },
+        {
+            "LogID": "eded8475-93f0-4627-af40-27a822ec6a25",
+            "Order": 0,
+            "Timestamp": 1754646774572,
+            "Stage": 1,
+            "ErrorType": 2,
+            "ErrorCode": "LP1014",
+            "Description": "We recommend running Runtime Analysis to find and remove all unused code",
+            "Details": [
+                "Navigate to the Runtime Analysis → Code tab to enable code stripping. Before uploading the playable, please make sure to have played all scenario’s of the playable in a development build to make Runtime Analysis work properly."
+            ],
+            "DescriptionValues": [],
+            "DetailsValues": [],
+            "LogCount": 1,
+            "LinePosition": 0,
+            "FilePath": "",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 0
+        },
+        {
+            "LogID": "425c5246-7f8c-4d39-879a-67131d552a74",
+            "Order": 1,
+            "Timestamp": 1754646774587,
+            "Stage": 1,
+            "ErrorType": 0,
+            "ErrorCode": "LP1027",
+            "Description": "This DOTween version is not supported",
+            "Details": [
+                "The incorrect DOTween version for this Unity version is in use, please update or downgrade to the recommended version {0} in the package manager. Go to Window → Package Manager."
+            ],
+            "DescriptionValues": [],
+            "DetailsValues": [
+                ""
+            ],
+            "LogCount": 1,
+            "LinePosition": 0,
+            "FilePath": "",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 0
+        },
+        {
+            "LogID": "4a805b24-1a03-4301-b689-7934d2aac2df",
+            "Order": 2,
+            "Timestamp": 1754646774587,
+            "Stage": 1,
+            "ErrorType": 0,
+            "ErrorCode": "LP1015",
+            "Description": "This TMP version is not fully supported",
+            "Details": [
+                "The incorrect Text Mesh Pro for this Unity version is in use, please update or downgrade to the recommended version {0} in the package manager. Go to Window → Package Manager"
+            ],
+            "DescriptionValues": [],
+            "DetailsValues": [
+                ""
+            ],
+            "LogCount": 1,
+            "LinePosition": 0,
+            "FilePath": "",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 0
+        },
+        {
+            "LogID": "d8ccdaeb-5ef7-418e-9d05-903f829383ae",
+            "Order": 3,
+            "Timestamp": 1754646774587,
+            "Stage": 1,
+            "ErrorType": 3,
+            "ErrorCode": "LP1002",
+            "Description": "Repeat wrap mode used on a texture with non power-of-two dimensions, this might not be rendered correctly.",
+            "Details": [
+                "bg-endcard",
+                "endcard-logo",
+                "endcard-text-win",
+                "endcard-cta",
+                "game-tetris",
+                "game-gta",
+                "game-cod",
+                "bg-gameplay",
+                "table",
+                "button-pass",
+                "button-pass-pressed",
+                "button-bid",
+                "button-bid-pressed",
+                "hand-pointer",
+                "header-text",
+                "avatar-bidder-3",
+                "avatar-bidder-2",
+                "avatar-bidder-1",
+                "money-container",
+                "avatar-player",
+                "value-400",
+                "profit+50",
+                "endcard-text-lose-2",
+                "endcard-text-lose-1"
+            ],
+            "DescriptionValues": [],
+            "DetailsValues": [],
+            "LogCount": 24,
+            "LinePosition": 0,
+            "FilePath": "",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 0
+        }
+    ]
+}
