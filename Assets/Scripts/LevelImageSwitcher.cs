@@ -18,7 +18,7 @@ public class LevelImageSwitcher : MonoBehaviour
         for (int i = 0; i < itemImages.Length; i++)
         {
             if (itemImages[i] != null)
-                itemImages[i].color = new Color(0.294f, 0.294f, 0.294f); // #4B4B4B
+                itemImages[i].color = new Color(0.294f, 0.294f, 0.294f, 0.50f); // #4B4B4B
         }
 
         // Activate first image & brighten it
@@ -42,7 +42,7 @@ public class LevelImageSwitcher : MonoBehaviour
 
         // Dim previous item
         if (itemImages[currentIndex] != null)
-            itemImages[currentIndex].color = new Color(0.294f, 0.294f, 0.294f);
+            itemImages[currentIndex].color = new Color(0.294f, 0.294f, 0.294f, 0.50f);
 
         // Enable new glow
         levelImages[newIndex].SetActive(true);

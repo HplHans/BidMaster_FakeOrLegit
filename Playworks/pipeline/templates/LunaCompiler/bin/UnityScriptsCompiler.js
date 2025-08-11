@@ -1,5 +1,5 @@
 /**
- * @version 1.0.9351.32198
+ * @version 1.0.9354.18008
  * @copyright anton
  * @compiler Bridge.NET 17.9.42-luna
  */
@@ -4291,7 +4291,7 @@ Bridge.assembly("UnityScriptsCompiler", function ($asm, globals) {
                 // Dim all items first
                 for (var i = 0; i < this.itemImages.length; i = (i + 1) | 0) {
                     if (UnityEngine.MonoBehaviour.op_Inequality(this.itemImages[i], null)) {
-                        this.itemImages[i].color = new pc.Color( 0.294, 0.294, 0.294, 1 );
+                        this.itemImages[i].color = new pc.Color( 0.294, 0.294, 0.294, 0.5 );
                     } // #4B4B4B
                 }
 
@@ -4326,7 +4326,7 @@ Bridge.assembly("UnityScriptsCompiler", function ($asm, globals) {
 
                 // Dim previous item
                 if (UnityEngine.MonoBehaviour.op_Inequality(this.itemImages[this.currentIndex], null)) {
-                    this.itemImages[this.currentIndex].color = new pc.Color( 0.294, 0.294, 0.294, 1 );
+                    this.itemImages[this.currentIndex].color = new pc.Color( 0.294, 0.294, 0.294, 0.5 );
                 }
 
                 // Enable new glow

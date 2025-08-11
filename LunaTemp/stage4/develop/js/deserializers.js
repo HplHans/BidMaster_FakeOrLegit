@@ -2230,7 +2230,7 @@ Deserializers.productName = "BidWars2-CosplayRequest";
 
 Deserializers.lunaInitializationTime = "08/07/2025 05:28:30";
 
-Deserializers.lunaDaysRunning = "1.2";
+Deserializers.lunaDaysRunning = "3.8";
 
 Deserializers.lunaVersion = "6.3.0";
 
@@ -2286,7 +2286,7 @@ Deserializers.graphicsConstraint = 28;
 
 Deserializers.linearColorSpace = false;
 
-Deserializers.buildID = "8dda1ee5-dbbf-4da3-8bc0-95e92fec00d7";
+Deserializers.buildID = "cdce7c8f-4511-4ab4-b798-2dad5213a754";
 
 Deserializers.runtimeInitializeOnLoadInfos = [[["UnityEngine","Experimental","Rendering","ScriptableRuntimeReflectionSystemSettings","ScriptingDirtyReflectionSystemInstance"]],[],[],[],[]];
 
