@@ -392,6 +392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ad5578094b7f845943987b6acc7a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 1308308855}
   library: {fileID: 11400000, guid: 878834c1e38f66e4d9c6fa92d9ae4548, type: 2}
   sfxPoolSize: 10
   enableSound: 0
@@ -4281,6 +4282,7 @@ MonoBehaviour:
   - {fileID: 266876880}
   - {fileID: 426003755}
   - {fileID: 1093817796}
+  audioManager: {fileID: 146807146}
   currentScore: 0
 --- !u!4 &1308308856
 Transform:

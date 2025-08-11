@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour, IAudioService
 {
+    public GameManager gameManager;
+
     public static AudioManager Instance { get; private set; }
 
     [Header("Library")]
@@ -21,6 +23,13 @@ public class AudioManager : MonoBehaviour, IAudioService
 
     void Awake()
     {
+        if (gameManager.SIP = true)
+        {
+            musicVolume = 0f;
+            sfxVolume = 0f;
+        }
+        
+
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
         DontDestroyOnLoad(gameObject);

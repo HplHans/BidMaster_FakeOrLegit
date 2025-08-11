@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private bool SIP = false; // Enable for SIP
+    public bool SIP = false; // Enable for SIP
     public static GameManager Instance;
     public GameObject endPanel;
     public CanvasGroupAnimator endPanelAnimator;
@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     public bool conditionMet;
     private int previousLevel = 0;
     [SerializeField] private List<GameObject> auctionItems;
+    public GameObject audioManager;
 
     public enum GameState { MainMenu, Playing, Paused, GameOver }
     public GameState CurrentState { get; private set; }
@@ -60,6 +61,13 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+
+        //SIP Check
+        if (SIP == true)
+        {
+            audioManager.SetActive(false);
+        }
+
         // Singleton setup
         if (Instance == null)
         {
@@ -211,7 +219,10 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator ItemsMove(int pos)
     {
-        AudioManager.Instance.PlaySFX("OnSwift");
+        if (SIP == false)
+        {
+            AudioManager.Instance.PlaySFX("OnSwift");
+        }
         Tween t = itemsParent.DOAnchorPosX(animPos[pos], 0.5f).SetEase(Ease.OutBack);
         yield return t.WaitForCompletion();
         foreach (var item in biddersBubble)

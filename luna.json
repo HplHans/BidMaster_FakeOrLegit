@@ -31395,7 +31395,7 @@
                     },
                     {
                         "name": "Unregister",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "ClearAll",
@@ -32099,7 +32099,7 @@
                     },
                     {
                         "name": "OnDisable",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "PlaySFX",
